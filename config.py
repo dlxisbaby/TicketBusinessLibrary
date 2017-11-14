@@ -21,3 +21,12 @@ cinema_info = {
     "mysql_user":"root",
     "mysql_passwd":"123456"
     }
+
+
+
+user_info={
+    'username':'69211',
+    'password':'692110',
+    'domainId':'1',
+    'appClientId':'170'
+}

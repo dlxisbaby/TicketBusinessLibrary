@@ -5,8 +5,6 @@ try:
 except ImportError:
     from TicketBusinessLibrary.libs import xmltodict
 
-
-
 class XmlAbout():
     def __init__(self):
         pass
