@@ -2,7 +2,10 @@
 
 #中间平台
 mid_info = {
-    "mid_ip":"172.16.200.233",
+    "ip":"172.16.200.233",
+    "mysql_db":"netsale_op_demo",
+    "mysql_user":"root",
+    "mysql_passwd":"pw1905ns",
     "mid_url":"http://testnetsale.m1905.com:23380/Api"
     }
 
@@ -17,16 +20,8 @@ cinema_info = {
     "cinema_id":"42",
     "cinema_code":"10000142",
     "ip":"192.168.3.142",
-    "db_name":"tms",
+    "mysql_db":"tms",
     "mysql_user":"root",
     "mysql_passwd":"123456"
     }
 
-
-
-user_info={
-    'username':'69211',
-    'password':'692110',
-    'domainId':'1',
-    'appClientId':'170'
-}

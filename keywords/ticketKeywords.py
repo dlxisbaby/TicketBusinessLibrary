@@ -182,7 +182,7 @@ class TicketKeywords():
             for Result in Results:
                     unique_id = Result.getElementsByTagName(unique_name)[0].childNodes[0].data
                     if unique_id == unique_value:
-                        return Result.getElementsByTagName(res_code)[0].childNodes[0].data
+                        return ResultgetElementsByTagName(res_code)[0].childNodes[0].data
                         break
 
     def dlx_sql_result_to_dict(self,tag_name_list,*tag_value_lists):
@@ -482,3 +482,8 @@ class TicketKeywords():
             else:
                 list_after.append(i)
         return list_after
+
+
+if __name__ == "__main__":
+    a = TicketKeywords().dlx_get_current_unix_time_string()
+    print a
