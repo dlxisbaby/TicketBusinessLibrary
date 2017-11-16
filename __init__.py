@@ -1,6 +1,6 @@
 #coding:utf-8
 
-from keywords.TicketKeywords import TicketKeywords
+from keywords.ticketKeywords import TicketKeywords
 
 class TicketBusinessLibrary(TicketKeywords):
     ROBOT_LIBRARY_SCOPE = "GLOBAL"

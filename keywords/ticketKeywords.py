@@ -8,9 +8,65 @@ import xml.dom.minidom
 reload(sys)
 sys.setdefaultencoding('utf8')
 
+from TicketBusinessLibrary.methods.aboutDB import Database
+
 class TicketKeywords():
     def __init__(self):
         pass
+
+    def dlx_select_142database(self,table,key="*",condition=''):
+        '''
+        查询142数据库
+        :param table: 表名称
+        :param key: 查询字段
+        :param condition: where条件（字典类型）
+        :return:
+        '''
+        datas = Database().DB142_Select(table,key,condition)
+        if key != "*":
+            data_list = []
+            for i in datas:
+                data_list.append(i[0])
+            return data_list
+        else:
+            return datas
+
+    def dlx_select_Middatabase(self,table,key="*",condition=''):
+        '''
+        查询中间平台数据库
+        :param table: 表名称
+        :param key: 查询字段
+        :param condition: where条件（字典类型）
+        :return:
+        '''
+        datas = Database().DBMid_Select(table,key,condition)
+        if key != "*":
+            data_list = []
+            for i in datas:
+                data_list.append(i[0])
+            return data_list
+        else:
+            return datas
+
+    def dlx_select_database_by_sql(self,db_name,sql,ip,port,user,passwd):
+        '''
+        使用自写sql查询任意服务器的数据库
+        :param db_name: 数据吗名称
+        :param sql: 查询语句
+        :param ip: IP地址
+        :param port: 端口
+        :param user: 用户名
+        :param passwd: 密码
+        :return:
+        '''
+        datas = Database(ip,int(port),user,passwd).DB_select_by_sql(db_name,sql)
+        if type(datas[0]) == tuple and len(datas[0]) <= 1:
+            data_list = []
+            for i in datas:
+                data_list.append(i[0])
+            return data_list
+        else:
+            return datas
 
     def dlx_check_contain_chinese(self,check_str):
         for ch in check_str.decode('utf-8'):
@@ -485,5 +541,5 @@ class TicketKeywords():
 
 
 if __name__ == "__main__":
-    a = TicketKeywords().dlx_get_current_unix_time_string()
+    a = TicketKeywords().dlx_select_database_by_sql("tms","select * from tms_retail_goods","192.168.3.142",3306,"root","123456")
     print a

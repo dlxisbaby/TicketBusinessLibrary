@@ -2,10 +2,12 @@
 
 try:
     import pymysql
+    import config
 except ImportError:
-    from libs import pymysql
+    from TicketBusinessLibrary.libs import pymysql
+    from TicketBusinessLibrary import config
 
-import sys,config
+import sys
 reload(sys)
 sys.setdefaultencoding("utf8")
 
@@ -14,13 +16,16 @@ from robot.api import logger
 class Database():
     def __init__(self,ip='',port='',user='',passwd=''):
         self.ip = ip
-        self.port = port
+        self.port = int(port)
         self.user = user
         self.passwd = passwd
 
-    def DB_select(self,db_name,table,key="*",condition=''):
-        datas = DB(db_name,table)._select(key)._where(condition)._submit(self.ip,self.port,self.user,self.passwd)
-        return datas
+    def DB_select_by_sql(self,db_name,sql):
+        conn = pymysql.connect(host=self.ip,port=3306,user=self.user,passwd=self.passwd,db=db_name,charset="utf8")
+        cur = conn.cursor()
+        cur.execute(sql)
+        fetchall = cur.fetchall()
+        return fetchall
 
     def DB142_Select(self,table,key="*",condition=''):
         datas = DB(config.cinema_info["mysql_db"],table)._select(key)._where(condition)._submit(config.cinema_info["ip"],3306,config.cinema_info["mysql_user"],config.cinema_info["mysql_passwd"])
@@ -83,8 +88,8 @@ class Handle():
         return fetchall
 
 if __name__ == "__main__":
-    a = Database().DB142_Select("tms_retail_goods")
-    print a[1]
+    a = Database("192.168.3.142","3306","root","123456").DB_select_by_sql("tms","select name from tms_retail_goods")
+    print a
     #b = DB("tms","tms_retail_goods")._select()._where({"id":1})._submit("192.168.3.142",3306,"root","123456")
     #print b[0]
 
