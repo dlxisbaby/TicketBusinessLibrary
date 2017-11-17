@@ -98,9 +98,10 @@ if __name__ == "__main__":
         </Cinemas>
     </GetCinemaResult>
 """
-    pass_tag_list = ['CreateDate','CityNo']
+    pass_tag_list = ['CreateDate']
     key = ''
     a = Xml()._xml_to_dict_list(xml1,"GetCinemaResult","Cinemas","Cinema")._order_by()._except_pass_tags()
-    print a
+    b = Do_XML().xml_to_dict_list(xml1,pass_tag_list,key,"GetCinemaResult","Cinemas","Cinema")
+    print b
 
 

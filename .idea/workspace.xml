@@ -4,9 +4,8 @@
     <list default="true" id="86d40ace-9666-4024-8767-d5c4d6b97595" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/__init__.py" afterPath="$PROJECT_DIR$/__init__.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/keywords/ticketKeywords.py" afterPath="$PROJECT_DIR$/keywords/ticketKeywords.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/methods/aboutDB.py" afterPath="$PROJECT_DIR$/methods/aboutDB.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/methods/aboutXML.py" afterPath="$PROJECT_DIR$/methods/aboutXML.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -40,7 +39,7 @@
       <file leaf-file-name="xmlAbout.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/methods/xmlAbout.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="31">
+            <state relative-caret-position="368">
               <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="47" selection-end-column="3" />
               <folding />
             </state>
@@ -57,24 +56,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ticketKeywords.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ticketKeywords.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/keywords/ticketKeywords.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="48">
-              <caret line="3" column="42" lean-forward="false" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="42" />
-              <folding />
+            <state relative-caret-position="208">
+              <caret line="231" column="56" lean-forward="true" selection-start-line="231" selection-start-column="56" selection-end-line="231" selection-end-column="56" />
+              <folding>
+                <element signature="e#15#42#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="aboutXML.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="aboutXML.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/methods/aboutXML.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="848">
-              <caret line="53" column="0" lean-forward="true" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-              <folding>
-                <element signature="e#1993#2991#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="176">
+              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -82,7 +81,7 @@
       <file leaf-file-name="aboutDB.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/methods/aboutDB.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
+            <state relative-caret-position="-576">
               <caret line="6" column="50" lean-forward="true" selection-start-line="6" selection-start-column="50" selection-end-line="6" selection-end-column="50" />
               <folding />
             </state>
@@ -146,13 +145,13 @@
         <option value="$PROJECT_DIR$/config.py" />
         <option value="$PROJECT_DIR$/__init__.py" />
         <option value="$PROJECT_DIR$/methods/aboutDB.py" />
-        <option value="$PROJECT_DIR$/keywords/ticketKeywords.py" />
         <option value="$PROJECT_DIR$/methods/aboutXML.py" />
+        <option value="$PROJECT_DIR$/keywords/ticketKeywords.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="187" />
+    <option name="x" value="85" />
     <option name="y" value="3" />
     <option name="width" value="1400" />
     <option name="height" value="820" />
@@ -175,6 +174,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -196,7 +196,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -215,7 +214,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.aboutXML">
+  <component name="RunManager" selected="Python.ticketKeywords">
     <configuration name="aboutDB" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -310,8 +309,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.aboutXML" />
-        <item index="1" class="java.lang.String" itemvalue="Python.ticketKeywords" />
+        <item index="0" class="java.lang.String" itemvalue="Python.ticketKeywords" />
+        <item index="1" class="java.lang.String" itemvalue="Python.aboutXML" />
         <item index="2" class="java.lang.String" itemvalue="Python.aboutDB" />
         <item index="3" class="java.lang.String" itemvalue="Python.excelTable" />
         <item index="4" class="java.lang.String" itemvalue="Python.session" />
@@ -325,13 +324,11 @@
     <configuration />
   </component>
   <component name="ToolWindowManager">
-    <frame x="187" y="3" width="1400" height="820" extended-state="0" />
+    <frame x="85" y="3" width="1400" height="820" extended-state="0" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26865673" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2761194" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32913166" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23529412" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32910448" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -339,10 +336,12 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985073" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" x="0" y="0" width="600" height="620" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32913166" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -403,7 +402,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2880">
           <caret line="184" column="31" lean-forward="false" selection-start-line="184" selection-start-column="31" selection-end-line="184" selection-end-column="31" />
-          <folding />
+          <folding>
+            <element signature="e#15#42#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -427,7 +428,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -483,7 +483,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -499,7 +498,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="704">
           <caret line="44" column="26" lean-forward="true" selection-start-line="44" selection-start-column="26" selection-end-line="44" selection-end-column="26" />
-          <folding />
+          <folding>
+            <element signature="e#15#42#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -531,7 +532,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
           <caret line="4" column="23" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-          <folding />
+          <folding>
+            <element signature="e#15#42#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -547,7 +550,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -595,7 +597,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
           <caret line="4" column="23" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-          <folding />
+          <folding>
+            <element signature="e#15#42#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -611,7 +615,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -659,7 +662,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
           <caret line="4" column="23" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-          <folding />
+          <folding>
+            <element signature="e#15#42#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -675,7 +680,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -699,7 +703,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -708,7 +711,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="172">
           <caret line="1122" column="0" lean-forward="false" selection-start-line="1122" selection-start-column="0" selection-end-line="1122" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -760,36 +762,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/methods/aboutDB.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="6" column="50" lean-forward="true" selection-start-line="6" selection-start-column="50" selection-end-line="6" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/methods/xmlAbout.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="31">
+        <state relative-caret-position="368">
           <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="47" selection-end-column="3" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/keywords/ticketKeywords.py">
+    <entry file="file://$PROJECT_DIR$/methods/aboutDB.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="3" column="42" lean-forward="false" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="42" />
+        <state relative-caret-position="-576">
+          <caret line="6" column="50" lean-forward="true" selection-start-line="6" selection-start-column="50" selection-end-line="6" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/methods/aboutXML.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="848">
-          <caret line="53" column="0" lean-forward="true" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+        <state relative-caret-position="176">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/keywords/ticketKeywords.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="231" column="56" lean-forward="true" selection-start-line="231" selection-start-column="56" selection-end-line="231" selection-end-column="56" />
           <folding>
-            <element signature="e#1993#2991#0" expanded="false" />
+            <element signature="e#15#42#0" expanded="true" />
           </folding>
         </state>
       </provider>

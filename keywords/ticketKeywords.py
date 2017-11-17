@@ -9,6 +9,7 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 
 from TicketBusinessLibrary.methods.aboutDB import Database
+from TicketBusinessLibrary.methods.aboutXML import *
 
 class TicketKeywords():
     def __init__(self):
@@ -16,11 +17,10 @@ class TicketKeywords():
 
     def dlx_select_142database(self,table,key="*",condition=''):
         '''
-        查询142数据库
+        查询142数据库,返回列表
         :param table: 表名称
         :param key: 查询字段
         :param condition: where条件（字典类型）
-        :return:
         '''
         datas = Database().DB142_Select(table,key,condition)
         if key != "*":
@@ -33,11 +33,10 @@ class TicketKeywords():
 
     def dlx_select_Middatabase(self,table,key="*",condition=''):
         '''
-        查询中间平台数据库
+        查询中间平台数据库,返回列表
         :param table: 表名称
         :param key: 查询字段
         :param condition: where条件（字典类型）
-        :return:
         '''
         datas = Database().DBMid_Select(table,key,condition)
         if key != "*":
@@ -50,14 +49,13 @@ class TicketKeywords():
 
     def dlx_select_database_by_sql(self,db_name,sql,ip,port,user,passwd):
         '''
-        使用自写sql查询任意服务器的数据库
+        使用自写sql查询任意服务器的数据库,返回列表
         :param db_name: 数据吗名称
         :param sql: 查询语句
         :param ip: IP地址
         :param port: 端口
         :param user: 用户名
         :param passwd: 密码
-        :return:
         '''
         datas = Database(ip,int(port),user,passwd).DB_select_by_sql(db_name,sql)
         if type(datas[0]) == tuple and len(datas[0]) <= 1:
@@ -68,7 +66,21 @@ class TicketKeywords():
         else:
             return datas
 
+    def dlx_xml_to_dictlist(self,xml_code,pass_tag_list=[],order_by='',*level_tag_names):
+        '''
+        将xml响应转化为字典列表
+        :param xml_code: xml响应
+        :param pass_tag_list: 忽略的标签列表
+        :param order_by: 排序的标签
+        :param level_tag_names: xml响应的层级标签
+        '''
+        return Xml()._xml_to_dict_list(xml_code,*level_tag_names)._order_by(order_by)._except_pass_tags(pass_tag_list)
+
     def dlx_check_contain_chinese(self,check_str):
+        '''
+        检查字符串是否包含中文
+        :param check_str:被检查得字符串
+        '''
         for ch in check_str.decode('utf-8'):
             if u'\u4e00' <= ch <= u'\u9fff':
                 return True
@@ -541,5 +553,31 @@ class TicketKeywords():
 
 
 if __name__ == "__main__":
-    a = TicketKeywords().dlx_select_database_by_sql("tms","select * from tms_retail_goods","192.168.3.142",3306,"root","123456")
+    xml1 ="""<?xml version="1.0"?>
+    <GetCinemaResult xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <ResultCode>0</ResultCode>
+        <Cinemas>
+            <Cinema>
+                <CinemaNo>40</CinemaNo>
+                <CinemaName>北京155</CinemaName>
+                <CinemaCode>10000155</CinemaCode>
+                <CityNo></CityNo>
+                <CreateDate></CreateDate>
+            </Cinema><Cinema>
+                <CinemaNo>41</CinemaNo>
+                <CinemaName>137测试服务器</CinemaName>
+                <CinemaCode>10000137</CinemaCode>
+                <CityNo></CityNo>
+                <CreateDate></CreateDate>
+            </Cinema><Cinema>
+                <CinemaNo>42</CinemaNo>
+                <CinemaName>10000142影院</CinemaName>
+                <CinemaCode>10000142</CinemaCode>
+                <CityNo></CityNo>
+                <CreateDate></CreateDate>
+            </Cinema>    
+        </Cinemas>
+    </GetCinemaResult>
+"""
+    a = TicketKeywords().dlx_xml_to_dictlist(xml1,[],'',"GetCinemaResult","Cinemas","Cinema")
     print a
