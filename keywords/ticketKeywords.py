@@ -219,39 +219,22 @@ class TicketKeywords():
         encrypted_string = m.hexdigest()
         return encrypted_string
 
-    def dlx_get_xml_resp_code(self,xml_resp,tag_name,unique_name="",unique_value="",res_code=""):
+    def dlx_get_xml_resp_code(self,xml_resp,tag_name,uni_name="",uni_value="",hope_name=""):
         '''
         解析返回的XML，返回所输入标签的内容\n
         1、后面3个参数都为空时，如:<tag_name>123</tag_name>,则返回123\n
-        2、如果后面3个参数同时不为空，则返回res_code的值\
-        unique_name为唯一标识标签名，unique_value为唯一标识的值\
-        res_code为与unique_name同级的标签的值\n
-        3、如果只有后面2个参数为空，则返回tag_name标签的下级，unique_name
+        2、如果后面3个参数同时不为空，则返回hope_name的值\
+        uni_name为唯一标识标签名，uni_value为唯一标识的值\
+        hope_name为与uni_name同级的标签的值\n
+        3、如果只有后面2个参数为空，则返回tag_name标签的下级，uni_name
         标签值的列表
         '''
-        xml_data = xml.dom.minidom.parseString(xml_resp)
-        Results = xml_data.getElementsByTagName(tag_name)
-        if unique_value == '' and res_code == '' and unique_name == '':
-            for Result in Results:
-                if len(Result.childNodes) != 0:
-                    return Result.childNodes[0].data
-                else:
-                    return ''
-        elif unique_value == '' and res_code == '':
-            value_list = []
-            for Result in Results:
-                if Result.getElementsByTagName(unique_name)[0].childNodes[0].data != None:
-                    value_list.append(Result.getElementsByTagName(unique_name)[0].childNodes[0].data)
-                    continue
-                else:
-                    break
-            return value_list
-        elif unique_value != '' and res_code != '' and unique_name != '':
-            for Result in Results:
-                    unique_id = Result.getElementsByTagName(unique_name)[0].childNodes[0].data
-                    if unique_id == unique_value:
-                        return ResultgetElementsByTagName(res_code)[0].childNodes[0].data
-                        break
+        if uni_value == '' and hope_name == '' and uni_name == '':
+            return Xml(xml_resp)._get_xml_resp_code_by_tag(tag_name)
+        elif uni_value == '' and hope_name == '':
+            return Xml(xml_resp)._get_xml_resp_code_by_unique(tag_name,uni_name)
+        elif uni_value != '' and hope_name != '' and uni_name != '':
+            return Xml(xml_resp)._get_xml_resp_code_by_uni_name_and_value(tag_name,uni_name,uni_value,hope_name)
 
     def dlx_sql_result_to_dict(self,tag_name_list,*tag_value_lists):
         '''
@@ -579,5 +562,5 @@ if __name__ == "__main__":
         </Cinemas>
     </GetCinemaResult>
 """
-    a = TicketKeywords().dlx_xml_to_dictlist(xml1,[],'',"GetCinemaResult","Cinemas","Cinema")
+    a = TicketKeywords().dlx_get_xml_resp_code(xml1,"Cinema","CinemaNo","41","CinemaCode")
     print a
