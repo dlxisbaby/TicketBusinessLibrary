@@ -25,3 +25,4 @@ cinema_info = {
     "mysql_passwd":"123456"
     }
 
+

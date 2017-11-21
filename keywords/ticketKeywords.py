@@ -10,6 +10,9 @@ sys.setdefaultencoding('utf8')
 
 from TicketBusinessLibrary.methods.aboutDB import Database
 from TicketBusinessLibrary.methods.aboutXML import *
+from TicketBusinessLibrary.methods.aboutString import String
+from TicketBusinessLibrary.methods.aboutList import List
+from TicketBusinessLibrary.methods.aboutTime import Time
 
 class TicketKeywords():
     def __init__(self):
@@ -81,10 +84,7 @@ class TicketKeywords():
         检查字符串是否包含中文
         :param check_str:被检查得字符串
         '''
-        for ch in check_str.decode('utf-8'):
-            if u'\u4e00' <= ch <= u'\u9fff':
-                return True
-        return False
+        return String._check_str_contain_chinese(check_str)
 
     def dlx_repeated_key_to_post_data(self,num,key_name,from_list):
         '''
@@ -178,46 +178,20 @@ class TicketKeywords():
         转化为标准列表
         [1, 3, 15, 16, 17, 18, 19, 20](mode=1时)
         [u'1',u'3',u'15',u'17',u'18',u'19',u'20'](mode=2时)
-
         '''
-        list1 = []
-        for i in db_list:
-            if mode == "1":
-                if type(i[0]) == type(int()) or type(i[0]) == type(Decimal()):
-                    list1.append(i[0])
-                elif type(i[0]) == type(unicode()):
-                    for ch in i[0]:
-                        #判断是否为中文
-                        if u'\u4e00' <= ch <= u'\u9fff':
-                            list1.append(i[0])
-                            break
-                        else:
-                            list1.append(i[0].encode("utf8"))
-                            break
-                else:
-                    list1.append(i[0].encode("utf8"))
-            elif mode == "2":
-                list1.append(str(i[0]).decode("utf-8"))
-        return list1
+        return List()._db_list_to_standard_list(db_list,mode="1")
 
     def dlx_get_current_unix_time_string(self):
         '''
         获得当前时间的unix时间戳字符串
         '''
-        format1 = '%Y-%m-%d %H:%M:%S'
-        time1 = time.localtime()
-        value = time.strftime(format1,time1)
-        s = time.mktime(time1)
-        return str(int(s))
+        return Time()._get_current_unix_time()
 
     def dlx_md5_32_lowercase(self,string):
         '''
         对字符串进行32位小写的MD5加密
         '''
-        m = hashlib.md5()
-        m.update(string)
-        encrypted_string = m.hexdigest()
-        return encrypted_string
+        return String._md5_32_lowercase(string)
 
     def dlx_get_xml_resp_code(self,xml_resp,tag_name,uni_name="",uni_value="",hope_name=""):
         '''
@@ -283,37 +257,6 @@ class TicketKeywords():
             for i in list_final:
                 i[tag_name_list[0]] = str(i[tag_name_list[0]]).decode("utf-8")
             return list_final
-
-    def dlx_xml_to_dict(self,xml_resp,order_by='',pass_tag=[],*level_tag_names):
-        '''
-        将XML型的响应结果转化为字典，level_tag_names为
-        需要获取的XML的层级,按照order_by的值进行排序,默认可不填。
-        pass_tag为需要忽略的tag列表
-        '''
-        convert_string = xmltodict.parse(xml_resp)
-        length = len(level_tag_names)
-        final_list = []
-        for i in range(0,length):
-            convert_string = convert_string[level_tag_names[i]]
-            if length == 1:
-                convert_string.pop("@xmlns:xsi")
-                convert_string.pop("@xmlns:xsd")
-        if type(convert_string) == OrderedDict:
-            convert_string = [convert_string]
-        for i in convert_string:
-            final_dict = dict(i)
-            if len(pass_tag) != 0:
-                for j in pass_tag:
-                    final_dict.pop(j)
-            final_list.append(final_dict)
-        #排序
-        if order_by != '':
-            for i in final_list:
-                i[order_by] = int(i[order_by])
-            final_list.sort(key=operator.itemgetter(order_by))
-            for i in final_list:
-                i[order_by] = str(i[order_by]).decode("utf-8")
-        return final_list
 
     def dlx_get_php_config_key_value(self,server_ip,remote_path,keyname):
         '''
