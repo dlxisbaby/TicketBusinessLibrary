@@ -1,10 +1,7 @@
 #coding:utf-8
 
-from decimal import Decimal
-import time,sys,hashlib,xmltodict,operator,os,paramiko,redis
-from xml.dom.minidom import parse
-from collections import OrderedDict
-import xml.dom.minidom
+
+import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 
@@ -13,52 +10,25 @@ from TicketBusinessLibrary.methods.aboutXML import *
 from TicketBusinessLibrary.methods.aboutString import String
 from TicketBusinessLibrary.methods.aboutList import List
 from TicketBusinessLibrary.methods.aboutTime import Time
+from TicketBusinessLibrary.methods.aboutFile import File
+from TicketBusinessLibrary.methods.aboutNumber import Number
+from TicketBusinessLibrary import config
+
+from robot.api import logger
 
 class TicketKeywords():
     def __init__(self):
         pass
 
-    def dlx_select_142database(self,table,key="*",condition=''):
+    def dlx_select_142database_by_sql(self,sql,db_name=config.cinema_info["mysql_db"],ip=config.cinema_info["ip"],port=3306,user=config.cinema_info["mysql_user"],passwd=config.cinema_info["mysql_passwd"]):
         '''
-        查询142数据库,返回列表
-        :param table: 表名称
-        :param key: 查询字段
-        :param condition: where条件（字典类型）
-        '''
-        datas = Database().DB142_Select(table,key,condition)
-        if key != "*":
-            data_list = []
-            for i in datas:
-                data_list.append(i[0])
-            return data_list
-        else:
-            return datas
-
-    def dlx_select_Middatabase(self,table,key="*",condition=''):
-        '''
-        查询中间平台数据库,返回列表
-        :param table: 表名称
-        :param key: 查询字段
-        :param condition: where条件（字典类型）
-        '''
-        datas = Database().DBMid_Select(table,key,condition)
-        if key != "*":
-            data_list = []
-            for i in datas:
-                data_list.append(i[0])
-            return data_list
-        else:
-            return datas
-
-    def dlx_select_database_by_sql(self,db_name,sql,ip,port,user,passwd):
-        '''
-        使用自写sql查询任意服务器的数据库,返回列表
-        :param db_name: 数据吗名称
-        :param sql: 查询语句
-        :param ip: IP地址
-        :param port: 端口
-        :param user: 用户名
-        :param passwd: 密码
+        使用自写sql查询任意服务器的数据库,返回列表\n
+        :param db_name: 数据吗名称\n
+        :param sql: 查询语句\n
+        :param ip: IP地址\n
+        :param port: 端口\n
+        :param user: 用户名\n
+        :param passwd: 密码\n
         '''
         datas = Database(ip,int(port),user,passwd).DB_select_by_sql(db_name,sql)
         if type(datas[0]) == tuple and len(datas[0]) <= 1:
@@ -69,7 +39,78 @@ class TicketKeywords():
         else:
             return datas
 
-    def dlx_xml_to_dictlist(self,xml_code,pass_tag_list=[],order_by='',*level_tag_names):
+    def dlx_select_Middatabase_by_sql(self,sql,db_name=config.mid_info["mysql_db"],ip=config.mid_info["ip"],port=3306,user=config.mid_info["mysql_user"],passwd=config.mid_info["mysql_passwd"]):
+        '''
+        使用自写sql查询任意服务器的数据库,返回列表\n
+        :param db_name: 数据吗名称\n
+        :param sql: 查询语句\n
+        :param ip: IP地址\n
+        :param port: 端口\n
+        :param user: 用户名\n
+        :param passwd: 密码\n
+        '''
+        datas = Database(ip,int(port),user,passwd).DB_select_by_sql(db_name,sql)
+        if type(datas[0]) == tuple and len(datas[0]) <= 1:
+            data_list = []
+            for i in datas:
+                data_list.append(i[0])
+            return data_list
+        else:
+            return datas
+
+    def dlx_select_database_by_sql(self,sql,db_name,ip,port,user,passwd):
+        '''
+        使用自写sql查询任意服务器的数据库,返回列表\n
+        :param db_name: 数据吗名称\n
+        :param sql: 查询语句\n
+        :param ip: IP地址\n
+        :param port: 端口\n
+        :param user: 用户名\n
+        :param passwd: 密码\n
+        '''
+        datas = Database(ip,int(port),user,passwd).DB_select_by_sql(db_name,sql)
+        if type(datas[0]) == tuple and len(datas[0]) <= 1:
+            data_list = []
+            for i in datas:
+                data_list.append(i[0])
+                logger.info(i[0])
+            return data_list
+        else:
+            return datas
+
+    def dlx_assert_two_result(self,expect,actual,msg=''):
+        '''
+        验证预期结果与实际结果是否相同\n
+        :param expect: 预期结果\n
+        :param actual: 实际结果\n
+        '''
+
+        if expect == actual:
+            logger.info(u"预期与实际结果相同")
+        else:
+            logger.info(u"预期结果为：{0}".format(expect))
+            logger.info(u"实际结果为：{0}".format(actual))
+            if msg == '':
+                raise AssertionError(u"预期与实际结果不同")
+            else:
+                raise AssertionError(msg)
+
+
+    def dlx_assert_xml_resp_code(self,expect,actual):
+        '''
+        验证预期结果与实际结果是否相同\n
+        :param expect: 预期结果\n
+        :param actual: 实际结果\n
+        '''
+
+        if expect == actual:
+            logger.info(u"预期与实际状态相同")
+        else:
+            logger.info(u"预期状态为：{0}".format(expect))
+            logger.info(u"实际状态为：{0}".format(actual))
+            raise AssertionError("返回的状态为{0}:{1}".format(actual,config.resp_code[actual]))
+
+    def dlx_xml_to_dictlist(self,xml_code,order_by='',pass_tag_list=[],*level_tag_names):
         '''
         将xml响应转化为字典列表
         :param xml_code: xml响应
@@ -77,7 +118,7 @@ class TicketKeywords():
         :param order_by: 排序的标签
         :param level_tag_names: xml响应的层级标签
         '''
-        return Xml()._xml_to_dict_list(xml_code,*level_tag_names)._order_by(order_by)._except_pass_tags(pass_tag_list)
+        return Xml(xml_code)._xml_to_dict_list(*level_tag_names)._order_by(order_by)._except_pass_tags(pass_tag_list)
 
     def dlx_check_contain_chinese(self,check_str):
         '''
@@ -191,7 +232,7 @@ class TicketKeywords():
         '''
         对字符串进行32位小写的MD5加密
         '''
-        return String._md5_32_lowercase(string)
+        return String()._md5_32_lowercase(string)
 
     def dlx_get_xml_resp_code(self,xml_resp,tag_name,uni_name="",uni_value="",hope_name=""):
         '''
@@ -217,69 +258,16 @@ class TicketKeywords():
         将tag_value_lists中每个列表的第一个值赋值给tag_name_list列表，\
         形成字典，以此类推，最后生成值为字典的列表\n
         '''
-        list_final = []
-        dict_final = {}
-        order_list = []
-        length = len(tag_name_list)
-        if type(tag_value_lists[0]) == list:
-            for k in range(0,len(tag_value_lists[0])):
-                i = 0
-                while i < length:
-                    if tag_value_lists[i][k] == None:
-                        dict_final[tag_name_list[i]] = tag_value_lists[i][k]
-                    else:
-                        dict_final[tag_name_list[i]] = str(tag_value_lists[i][k]).decode("utf-8")
-                    i = i+1
-                dict2 = dict_final.copy()
-                if order_list != []:
-                    dict2 = dict(dict2.items()+order_list[k].items())
-                list_final.append(dict2)
-                continue
-            for i in list_final:
-                i[tag_name_list[0]] = int(i[tag_name_list[0]])
-            list_final.sort(key=operator.itemgetter(tag_name_list[0]))
-            for i in list_final:
-                i[tag_name_list[0]] = str(i[tag_name_list[0]]).decode("utf-8")
-            return list_final
+        if type(tag_value_lists[0]) == list or type(tag_value_lists[0]) == tuple:
+            return List()._sql_list_to_dict_list(tag_name_list,*tag_value_lists)
         else:
-            for k in range(0,len(tag_value_lists)):
-                if tag_value_lists[k] == None:
-                    dict_final[tag_name_list[k]] = tag_value_lists[k]
-                else:
-                    dict_final[tag_name_list[k]] = str(tag_value_lists[k]).decode("utf-8")
-            dict2 = dict_final.copy()
-            if order_list != []:
-                dict2 = dict(dict2.items()+order_list[0].items())
-            list_final.append(dict2)
-            for i in list_final:
-                i[tag_name_list[0]] = int(i[tag_name_list[0]])
-            list_final.sort(key=operator.itemgetter(tag_name_list[0]))
-            for i in list_final:
-                i[tag_name_list[0]] = str(i[tag_name_list[0]]).decode("utf-8")
-            return list_final
+            return List()._sql_single_to_dict(tag_name_list,*tag_value_lists)
 
     def dlx_get_php_config_key_value(self,server_ip,remote_path,keyname):
         '''
         获取服务器中config.php中的keyname的值
         '''
-        local_path = u"D:/config.php"
-        client = paramiko.Transport((server_ip,22))
-        client.connect(username="root",password="pw#1905")
-        sftp = paramiko.SFTPClient.from_transport(client)
-        sftp.get(remote_path,local_path)
-        client.close()
-
-        f = open(local_path,"r")
-        lines = f.readlines()
-        for line in lines:
-            line = line,
-            line = line[0].strip()
-            liness = line.split("=>")
-            liness[0] = liness[0].strip().replace("'",'').replace('"','')
-            if liness[0] == keyname:
-                f.close()
-                os.remove(local_path)
-                return liness[1].strip().replace("'",'').replace(",",'').replace('"','')
+        return File()._get_php_config_key_value(server_ip,remote_path,keyname)
 
     def dlx_make_list_to_ordered_dict_list(self,normal_dict,level_num):
         '''
@@ -362,56 +350,19 @@ class TicketKeywords():
         '''
         连接2个字典列表，key_name是list_main中的字典需要新加的key
         '''
-        length1 = len(list_main)
-        new_key = str(key_name).decode("utf-8")
-        if length1 == 1:
-            list_main[0][new_key] = list_order[0]
-            return list_main
-        else:
-            for i in range(0,length1):
-                list_main[i][new_key] = list_order[i]
-            return list_main
+        return List()._contact_two_dict_list(list_main,list_order,key_name)
 
-    def dlx_get_value_list_from_redis(self,cinema_code,session_code,order_by_key,target_key):
+    def dlx_get_value_list_from_redis(self,cinema_code,session_code,order_by_key):
         '''
         从redis中获取座位数据
         '''
-        r = redis.Redis(host="172.16.200.233",port="6379",db=0)
-        string1 = r.hgetall("CACHE:HASH:SESSIONSEAT:{0}:{1}".format(cinema_code,session_code))
-        list1 = string1.values()
-        list_final = []
-        list_sorted = []
-        for i in list1:
-            dict1 = eval(i)
-            if type(dict1[order_by_key]) != int:
-                dict1[order_by_key] = int(dict1[order_by_key])
-                list_sorted.append(dict1)
-        list_sorted.sort(key=operator.itemgetter(order_by_key))
-        for i in list_sorted:
-            i[order_by_key] = str(i[order_by_key])
-            if i["status"] == "available":
-                list_final.append("0")
-            elif i["status"] == "sold":
-                list_final.append("1")
-            elif i["status"] == "locked":
-                list_final.append("3")
-            else:
-                list_final.append("-1")
-        return list_final
+        return Database()._get_value_list_from_redis(cinema_code,session_code,order_by_key)
 
     def dlx_convert_dict_list_to_float(self,dict_list,fields):
         '''
         将dict_list中的字典的字段值转化为float类型
         '''
-        for i in dict_list:
-            for j in i:
-                if type(fields) == list:
-                    if j in fields:
-                        i[j] = str(float(i[j])).decode("utf-8")
-                else:
-                    if j == fields:
-                        i[j] = str(float(i[j])).decode("utf-8")
-        return dict_list
+        return Number()._convert_dict_list_to_float(dict_list,fields)
 
     def dlx_keep_significant_digit(self,obj):
         '''
@@ -419,63 +370,34 @@ class TicketKeywords():
         取消小数点后的无效0
         '''
         if type(obj) == float:
-            obj = str(obj)
-            length = len(obj)
-            for i in range(1,length+1):
-                if obj[-1] == "0":
-                    obj = obj[:-1]
-                else:
-                    break
-            if obj[-1] == ".":
-                obj = int(obj[:-1])
-            else:
-                obj = float(obj)
-            return obj
-        elif type(obj) == int:
-            return obj
+            return Number()._remove_zero_from_float(obj)
         elif type(obj) == list or type(obj) == tuple:
-            list_leng = len(obj)
-            for i in range(0,list_leng):
-                if type(obj[i]) == int:
-                    continue
-                else:
-                    temp = str(obj[i])
-                    length = len(temp)
-                    for j in range(1,length+1):
-                        if temp[-1] == "0":
-                            temp = temp[:-1]
-                        else:
-                            break
-                    if temp[-1] == ".":
-                        temp = int(temp[:-1])
-                    else:
-                        temp = float(temp)
-                    obj[i] = temp
+            return Number()._remove_zero_from_list_or_tuple(obj)
+        else:
             return obj
 
     def dlx_make_string_for_sql(self,list_obj):
         '''
         转换一个列表给数据库的in关键字使用
         '''
-        final_string = ''
-        for i in list_obj:
-            i = "\"{0}\"".format(i)
-            final_string = final_string + i + ","
-        return final_string[:-1]
+        return String()._make_string_for_sql(list_obj)
 
     def dlx_remove_float_end_zero(self,list_begin):
         '''
         消除列表里面float类型尾部的0
         '''
-        list_after = []
-        for i in list_begin:
-            i = float(i)
-            num_str = str(i)
-            if num_str[-1] == '0':
-                list_after.append(int(i))
-            else:
-                list_after.append(i)
-        return list_after
+        return List()._remove_float_end_zero(list_begin)
+
+    def dlx_get_n_length_same_list(self,n,value,mode=1):
+        '''
+        N为3，value为None\n
+        mode为1生成[u'None',u'None',u'None']\n
+        mode为2生成['None','None','None']\n
+        mode为3生成[None,None,None]\n
+        :param n: 列表长度\n
+        :param value: 列表的值\n
+        '''
+        return List()._get_n_length_same_value_list(n,value,mode)
 
 
 if __name__ == "__main__":
@@ -505,5 +427,112 @@ if __name__ == "__main__":
         </Cinemas>
     </GetCinemaResult>
 """
-    a = TicketKeywords().dlx_get_xml_resp_code(xml1,"Cinema","CinemaNo","41","CinemaCode")
-    print a
+
+    xml2 = """<?xml version="1.0"?>
+<GetCinemaSessionResult xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <ResultCode>0</ResultCode>
+    <Sessions>
+        <Session>
+            <SessionNo>6074</SessionNo>
+            <SessionDate>2017-11-27</SessionDate>
+            <StartTime>15:45</StartTime>
+            <TotalTime>120</TotalTime>
+            <Consecutive>0</Consecutive>
+            <FilmCount>1</FilmCount>
+            <Films>
+                <Film>
+                    <FilmNo>458</FilmNo>
+                    <FilmName>狂兽(2D) </FilmName>
+                    <FilmType>2d</FilmType>
+                    <Language>cn</Language>
+                </Film>            </Films>
+            <ScreenNo>5</ScreenNo>
+            <ScreenType>normal</ScreenType>
+            <CinemaNo>42</CinemaNo>
+            <AppPrice>69</AppPrice>
+            <SettlementPrice>60.00</SettlementPrice>            
+            <StandartPrice>60.00</StandartPrice>
+            <LowestPrice>20.00</LowestPrice>
+            <Fee>9.00</Fee>
+            <Type>2D</Type>
+            <Status>1</Status>
+        </Session><Session>
+            <SessionNo>6075</SessionNo>
+            <SessionDate>2017-11-27</SessionDate>
+            <StartTime>15:55</StartTime>
+            <TotalTime>90</TotalTime>
+            <Consecutive>0</Consecutive>
+            <FilmCount>1</FilmCount>
+            <Films>
+                <Film>
+                    <FilmNo>438</FilmNo>
+                    <FilmName>分类细化(中国巨幕3D22) </FilmName>
+                    <FilmType>dmax3d</FilmType>
+                    <Language>cn</Language>
+                </Film>            </Films>
+            <ScreenNo>9</ScreenNo>
+            <ScreenType>cmax</ScreenType>
+            <CinemaNo>42</CinemaNo>
+            <AppPrice>59</AppPrice>
+            <SettlementPrice>50.00</SettlementPrice>            
+            <StandartPrice>50.00</StandartPrice>
+            <LowestPrice>45.00</LowestPrice>
+            <Fee>9.00</Fee>
+            <Type>2D</Type>
+            <Status>1</Status>
+        </Session><Session>
+            <SessionNo>6076</SessionNo>
+            <SessionDate>2017-11-27</SessionDate>
+            <StartTime>18:00</StartTime>
+            <TotalTime>120</TotalTime>
+            <Consecutive>0</Consecutive>
+            <FilmCount>1</FilmCount>
+            <Films>
+                <Film>
+                    <FilmNo>183</FilmNo>
+                    <FilmName>湄公河行动(中国巨幕) </FilmName>
+                    <FilmType>3d</FilmType>
+                    <Language>cn</Language>
+                </Film>            </Films>
+            <ScreenNo>5</ScreenNo>
+            <ScreenType>normal</ScreenType>
+            <CinemaNo>42</CinemaNo>
+            <AppPrice>89</AppPrice>
+            <SettlementPrice>80.00</SettlementPrice>            
+            <StandartPrice>80.00</StandartPrice>
+            <LowestPrice>0.01</LowestPrice>
+            <Fee>9.00</Fee>
+            <Type>2D</Type>
+            <Status>1</Status>
+        </Session><Session>
+            <SessionNo>6077</SessionNo>
+            <SessionDate>2017-11-27</SessionDate>
+            <StartTime>20:10</StartTime>
+            <TotalTime>160</TotalTime>
+            <Consecutive>0</Consecutive>
+            <FilmCount>1</FilmCount>
+            <Films>
+                <Film>
+                    <FilmNo>439</FilmNo>
+                    <FilmName>九一八(影展观摩片) </FilmName>
+                    <FilmType>view</FilmType>
+                    <Language>cn</Language>
+                </Film>            </Films>
+            <ScreenNo>5</ScreenNo>
+            <ScreenType>normal</ScreenType>
+            <CinemaNo>42</CinemaNo>
+            <AppPrice>59</AppPrice>
+            <SettlementPrice>50.00</SettlementPrice>            
+            <StandartPrice>50.00</StandartPrice>
+            <LowestPrice>5.00</LowestPrice>
+            <Fee>9.00</Fee>
+            <Type>2D</Type>
+            <Status>1</Status>
+        </Session>    </Sessions>
+</GetCinemaSessionResult>
+"""
+    a = [1.20,2.3,3.40,4.00,40.00]
+
+
+    b = TicketKeywords().dlx_xml_to_dictlist(xml2,"",[],"GetCinemaSessionResult","Sessions","Session")
+    print b[0]

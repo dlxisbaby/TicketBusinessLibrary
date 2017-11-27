@@ -28,6 +28,15 @@ class String():
         encrypted_string = m.hexdigest()
         return encrypted_string
 
+    def _make_string_for_sql(self,list_obj):
+        '''
+        转换一个列表给数据库的in关键字使用
+        '''
+        final_string = ''
+        for i in list_obj:
+            i = "\"{0}\"".format(i)
+            final_string = final_string + i + ","
+        return final_string[:-1]
 
 
 if __name__ == "__main__":

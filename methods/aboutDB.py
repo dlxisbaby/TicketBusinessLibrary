@@ -3,11 +3,13 @@
 try:
     import pymysql
     import config
+    import redis
 except ImportError:
     from TicketBusinessLibrary.libs import pymysql
+    from TicketBusinessLibrary.libs import redis
     from TicketBusinessLibrary import config
 
-import sys
+import sys,operator
 reload(sys)
 sys.setdefaultencoding("utf8")
 
@@ -35,6 +37,32 @@ class Database():
         datas = DB(config.mid_info["mysql_db"],table)._select(key)._where(condition)._submit(config.mid_info["ip"],3306,config.mid_info["mysql_user"],config.mid_info["mysql_passwd"])
         return datas
 
+    def _get_value_list_from_redis(self,cinema_code,session_code,order_by_key):
+        '''
+        从redis中获取座位数据
+        '''
+        r = redis.Redis(host="172.16.200.233",port="6379",db=0)
+        string1 = r.hgetall("CACHE:HASH:SESSIONSEAT:{0}:{1}".format(cinema_code,session_code))
+        list1 = string1.values()
+        list_final = []
+        list_sorted = []
+        for i in list1:
+            dict1 = eval(i)
+            if type(dict1[order_by_key]) != int:
+                dict1[order_by_key] = int(dict1[order_by_key])
+                list_sorted.append(dict1)
+        list_sorted.sort(key=operator.itemgetter(order_by_key))
+        for i in list_sorted:
+            i[order_by_key] = str(i[order_by_key])
+            if i["status"] == "available":
+                list_final.append("0")
+            elif i["status"] == "sold":
+                list_final.append("1")
+            elif i["status"] == "locked":
+                list_final.append("3")
+            else:
+                list_final.append("-1")
+        return list_final
 
 class DB():
     def __init__(self,db,table):
@@ -62,11 +90,14 @@ class Condition():
         :return:
         '''
         if kwargs:
+            kwargs = dict(kwargs)
+            logger.info(kwargs)
             condition = " where 1=1 AND "
         else:
             condition = " where 1=1 "
 
         _filter = " AND ".join(["{0}='{1}'".format( k, kwargs.get(k)) for k in kwargs])
+        logger.info(u"condition为：{0}".format(_filter))
         sql = self.sql+condition+_filter
         return Handle(self.db,sql)
 
