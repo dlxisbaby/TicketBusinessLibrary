@@ -12,6 +12,7 @@ from TicketBusinessLibrary.methods.aboutList import List
 from TicketBusinessLibrary.methods.aboutTime import Time
 from TicketBusinessLibrary.methods.aboutFile import File
 from TicketBusinessLibrary.methods.aboutNumber import Number
+from TicketBusinessLibrary.methods.aboutDict import Dict
 from TicketBusinessLibrary import config
 
 from robot.api import logger
@@ -106,9 +107,9 @@ class TicketKeywords():
         if expect == actual:
             logger.info(u"预期与实际状态相同")
         else:
-            logger.info(u"预期状态为：{0}".format(expect))
-            logger.info(u"实际状态为：{0}".format(actual))
-            raise AssertionError("返回的状态为{0}:{1}".format(actual,config.resp_code[actual]))
+            logger.info(u"预期状态为：{0}\"{1}\"".format(expect,config.resp_code[expect]))
+            logger.info(u"实际状态为：{0}\"{1}\"".format(actual,config.resp_code[actual]))
+            raise AssertionError(u"返回的状态与预期不相符")
 
     def dlx_xml_to_dictlist(self,xml_code,order_by='',pass_tag_list=[],*level_tag_names):
         '''
@@ -251,7 +252,7 @@ class TicketKeywords():
         elif uni_value != '' and hope_name != '' and uni_name != '':
             return Xml(xml_resp)._get_xml_resp_code_by_uni_name_and_value(tag_name,uni_name,uni_value,hope_name)
 
-    def dlx_sql_result_to_dict(self,tag_name_list,*tag_value_lists):
+    def dlx_sql_result_to_dictlist(self,tag_name_list,*tag_value_lists):
         '''
         tag_value_lists = [list1,list2,list3,……]\n
         tag_value_lists的长度应等于tag_name_list的长度\n
@@ -269,6 +270,7 @@ class TicketKeywords():
         '''
         return File()._get_php_config_key_value(server_ip,remote_path,keyname)
 
+    """
     def dlx_make_list_to_ordered_dict_list(self,normal_dict,level_num):
         '''
         level_num为父层级的数量
@@ -345,6 +347,15 @@ class TicketKeywords():
                 ordered_dict[normal_dict["level_name"]] = dict2
                 list_final.append(ordered_dict)
                 return list_final
+    """
+    def dlx_make_list_to_ordered_dict_list(self,up_level,level_name_list,*level_value_list):
+        '''
+        生成一个有序字典列表
+        :param up_level: 上级名称
+        :param level_name_list: 层级名称列表level_name_list=[u'FilmNo', u'FilmName', u'FilmType', u'Language']
+        :param level_value_list: 层级值列表，需要与层级名称列表中的值一一对应FilmNo_list,FilmName_list,FilmType_list,Language_list
+        '''
+        return Dict()._make_list_to_ordereddict_list(up_level,level_name_list,*level_value_list)
 
     def dlx_contact_two_dict_list(self,list_main,list_order,key_name):
         '''
@@ -445,7 +456,8 @@ if __name__ == "__main__":
                     <FilmName>狂兽(2D) </FilmName>
                     <FilmType>2d</FilmType>
                     <Language>cn</Language>
-                </Film>            </Films>
+                </Film>            
+            </Films>
             <ScreenNo>5</ScreenNo>
             <ScreenType>normal</ScreenType>
             <CinemaNo>42</CinemaNo>
@@ -456,7 +468,8 @@ if __name__ == "__main__":
             <Fee>9.00</Fee>
             <Type>2D</Type>
             <Status>1</Status>
-        </Session><Session>
+        </Session>
+        <Session>
             <SessionNo>6075</SessionNo>
             <SessionDate>2017-11-27</SessionDate>
             <StartTime>15:55</StartTime>
@@ -469,7 +482,8 @@ if __name__ == "__main__":
                     <FilmName>分类细化(中国巨幕3D22) </FilmName>
                     <FilmType>dmax3d</FilmType>
                     <Language>cn</Language>
-                </Film>            </Films>
+                </Film>            
+            </Films>
             <ScreenNo>9</ScreenNo>
             <ScreenType>cmax</ScreenType>
             <CinemaNo>42</CinemaNo>
@@ -480,7 +494,8 @@ if __name__ == "__main__":
             <Fee>9.00</Fee>
             <Type>2D</Type>
             <Status>1</Status>
-        </Session><Session>
+        </Session>
+        <Session>
             <SessionNo>6076</SessionNo>
             <SessionDate>2017-11-27</SessionDate>
             <StartTime>18:00</StartTime>
@@ -493,7 +508,8 @@ if __name__ == "__main__":
                     <FilmName>湄公河行动(中国巨幕) </FilmName>
                     <FilmType>3d</FilmType>
                     <Language>cn</Language>
-                </Film>            </Films>
+                </Film>            
+            </Films>
             <ScreenNo>5</ScreenNo>
             <ScreenType>normal</ScreenType>
             <CinemaNo>42</CinemaNo>
@@ -504,7 +520,8 @@ if __name__ == "__main__":
             <Fee>9.00</Fee>
             <Type>2D</Type>
             <Status>1</Status>
-        </Session><Session>
+        </Session>
+        <Session>
             <SessionNo>6077</SessionNo>
             <SessionDate>2017-11-27</SessionDate>
             <StartTime>20:10</StartTime>
@@ -517,7 +534,8 @@ if __name__ == "__main__":
                     <FilmName>九一八(影展观摩片) </FilmName>
                     <FilmType>view</FilmType>
                     <Language>cn</Language>
-                </Film>            </Films>
+                </Film>            
+            </Films>
             <ScreenNo>5</ScreenNo>
             <ScreenType>normal</ScreenType>
             <CinemaNo>42</CinemaNo>
@@ -528,11 +546,12 @@ if __name__ == "__main__":
             <Fee>9.00</Fee>
             <Type>2D</Type>
             <Status>1</Status>
-        </Session>    </Sessions>
+        </Session>    
+    </Sessions>
 </GetCinemaSessionResult>
 """
     a = [1.20,2.3,3.40,4.00,40.00]
 
 
     b = TicketKeywords().dlx_xml_to_dictlist(xml2,"",[],"GetCinemaSessionResult","Sessions","Session")
-    print b[0]
+    print b

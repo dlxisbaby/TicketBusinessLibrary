@@ -44,12 +44,12 @@ class List():
         形成字典，以此类推，最后生成值为字典的列表\n
         '''
         if len(tag_name_list) != len(tag_value_lists):
-            raise u"tag_name_list长度与tag_value_lists长度不相等"
+            raise ValueError(u"tag_name_list长度与tag_value_lists长度不相等")
         else:
             length = len(tag_value_lists[0])
             for i in tag_value_lists:
                 if len(i) != length:
-                    raise u"tag_value_lists中的列表长度不相等"
+                    raise ValueError(u"tag_value_lists中的列表长度不相等")
         final_dict = {}
         final_list = []
         length = len(tag_name_list)
@@ -133,6 +133,6 @@ if __name__ == "__main__":
     a3 = ["a","s","d"]
     cc = ["id","name","add"]
     b = List()._get_n_length_same_list(3,None,1)
-    print b
+
 
 
