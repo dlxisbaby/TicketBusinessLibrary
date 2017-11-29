@@ -5,7 +5,7 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-from TicketBusinessLibrary.methods.aboutDB import Database
+from TicketBusinessLibrary.methods.aboutDB import Database,Redis
 from TicketBusinessLibrary.methods.aboutXML import *
 from TicketBusinessLibrary.methods.aboutString import String
 from TicketBusinessLibrary.methods.aboutList import List
@@ -119,7 +119,8 @@ class TicketKeywords():
         :param order_by: 排序的标签
         :param level_tag_names: xml响应的层级标签
         '''
-        return Xml(xml_code)._xml_to_dict_list(*level_tag_names)._order_by(order_by)._except_pass_tags(pass_tag_list)
+        dict_list = Xml(xml_code)._xml_to_dict_list(*level_tag_names)._order_by(order_by)._except_pass_tags(pass_tag_list)
+        return Dict()._orderdict_to_dict(dict_list)
 
     def dlx_check_contain_chinese(self,check_str):
         '''
@@ -348,14 +349,14 @@ class TicketKeywords():
                 list_final.append(ordered_dict)
                 return list_final
     """
-    def dlx_make_list_to_ordered_dict_list(self,up_level,level_name_list,*level_value_list):
+    def dlx_make_list_to_dict_list(self,up_level,level_name_list,*level_value_list):
         '''
-        生成一个有序字典列表
+        生成一个字典列表
         :param up_level: 上级名称
         :param level_name_list: 层级名称列表level_name_list=[u'FilmNo', u'FilmName', u'FilmType', u'Language']
         :param level_value_list: 层级值列表，需要与层级名称列表中的值一一对应FilmNo_list,FilmName_list,FilmType_list,Language_list
         '''
-        return Dict()._make_list_to_ordereddict_list(up_level,level_name_list,*level_value_list)
+        return Dict()._make_list_to_dict_list(up_level,level_name_list,*level_value_list)
 
     def dlx_contact_two_dict_list(self,list_main,list_order,key_name):
         '''
@@ -367,7 +368,7 @@ class TicketKeywords():
         '''
         从redis中获取座位数据
         '''
-        return Database()._get_value_list_from_redis(cinema_code,session_code,order_by_key)
+        return Redis()._get_value_list_from_redis(cinema_code,session_code,order_by_key)
 
     def dlx_convert_dict_list_to_float(self,dict_list,fields):
         '''
@@ -553,5 +554,9 @@ if __name__ == "__main__":
     a = [1.20,2.3,3.40,4.00,40.00]
 
 
-    b = TicketKeywords().dlx_xml_to_dictlist(xml2,"",[],"GetCinemaSessionResult","Sessions","Session")
+    b = TicketKeywords().dlx_get_value_list_from_redis("10000142","d02dd5c319c24af9","seat_id")
     print b
+    print len(b)
+
+
+

@@ -14,6 +14,7 @@ reload(sys)
 sys.setdefaultencoding("utf8")
 
 from robot.api import logger
+from TicketBusinessLibrary.methods.aboutList import List
 
 class Database():
     def __init__(self,ip='',port='',user='',passwd=''):
@@ -37,13 +38,26 @@ class Database():
         datas = DB(config.mid_info["mysql_db"],table)._select(key)._where(condition)._submit(config.mid_info["ip"],3306,config.mid_info["mysql_user"],config.mid_info["mysql_passwd"])
         return datas
 
-    def _get_value_list_from_redis(self,cinema_code,session_code,order_by_key):
+class Redis():
+    def __init__(self,cinema_code,session_code):
+        self.cinema_code = cinema_code
+        self.session_code = session_code
+
+    def _get_seat_info_from_redis(self,order_by="seat_id"):
+        r = redis.Redis(host="172.16.200.233",port="6379",db=0)
+        string1 = r.hgetall("CACHE:HASH:SESSIONSEAT:{0}:{1}".format(self.cinema_code,self.session_code))
+        dict_list = string1.values()
+        #final_list = List()._sort_dictlist(dict_list,order_by)
+        return dict_list
+
+    def _get_value_list_from_redis22(self,cinema_code,session_code,order_by_key):
         '''
         从redis中获取座位数据
         '''
         r = redis.Redis(host="172.16.200.233",port="6379",db=0)
         string1 = r.hgetall("CACHE:HASH:SESSIONSEAT:{0}:{1}".format(cinema_code,session_code))
         list1 = string1.values()
+        print list1
         list_final = []
         list_sorted = []
         for i in list1:
@@ -119,8 +133,9 @@ class Handle():
         return fetchall
 
 if __name__ == "__main__":
-    a = Database("192.168.3.142","3306","root","123456").DB_select_by_sql("tms","select name from tms_retail_goods")
+    a = Redis("10000142","15bb78b0d1d24bbb")._get_seat_info_from_redis()
     print a
-    #b = DB("tms","tms_retail_goods")._select()._where({"id":1})._submit("192.168.3.142",3306,"root","123456")
-    #print b[0]
+    print len(a)
+    b = List()._sort_dictlist(a,"seat_id")
+    #print b
 
