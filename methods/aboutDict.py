@@ -18,11 +18,7 @@ class Dict():
             for i in obj:
                 obj[i] = Dict()._orderdict_to_dict(obj[i])
         elif type(obj) == OrderedDict:
-            #print obj
             obj = dict(obj)
-            #print obj
-            #for i in obj:
-            #    print obj[i]
             Dict()._orderdict_to_dict(obj)
         return obj
 

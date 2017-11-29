@@ -96,6 +96,23 @@ class TicketKeywords():
             else:
                 raise AssertionError(msg)
 
+    def dlx_assert_two_result_as_string(self,expect,actual,msg=''):
+        '''
+        验证预期结果与实际结果是否相同\n
+        :param expect: 预期结果\n
+        :param actual: 实际结果\n
+        '''
+
+        if str(expect) == str(actual):
+            logger.info(u"预期与实际结果相同")
+        else:
+            logger.info(u"预期结果为：{0}".format(expect))
+            logger.info(u"实际结果为：{0}".format(actual))
+            if msg == '':
+                raise AssertionError(u"预期与实际结果不同")
+            else:
+                raise AssertionError(msg)
+
 
     def dlx_assert_xml_resp_code(self,expect,actual):
         '''
@@ -364,11 +381,13 @@ class TicketKeywords():
         '''
         return List()._contact_two_dict_list(list_main,list_order,key_name)
 
-    def dlx_get_value_list_from_redis(self,cinema_code,session_code,order_by_key):
+    def dlx_get_seat_info_from_redis(self,cinema_code,session_code,seat_status="",order_by="seat_id"):
         '''
         从redis中获取座位数据
+        seat_status为座位状态，可售available，不可售unavailable，\n
+        已锁定locked，已售sold
         '''
-        return Redis()._get_value_list_from_redis(cinema_code,session_code,order_by_key)
+        return Redis(cinema_code,session_code)._get_seat_info_from_redis(seat_status,order_by)
 
     def dlx_convert_dict_list_to_float(self,dict_list,fields):
         '''
@@ -554,7 +573,7 @@ if __name__ == "__main__":
     a = [1.20,2.3,3.40,4.00,40.00]
 
 
-    b = TicketKeywords().dlx_get_value_list_from_redis("10000142","d02dd5c319c24af9","seat_id")
+    b = TicketKeywords().dlx_get_seat_info_from_redis("10000142","d02dd5c319c24af9")
     print b
     print len(b)
 

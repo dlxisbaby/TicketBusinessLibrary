@@ -91,10 +91,4 @@ resp_code = {
     "900016":u"获取失败",
 }
 
-aa1 = OrderedDict([(u'FilmNo', u'458'), (u'FilmName', u'\u72c2\u517d(2D)'), (u'FilmType', u'2d'), (u'Language', u'cn')])
-aa2 = OrderedDict([ (u'FilmName', u'\u72c2\u517d(2D)'), (u'FilmType', u'2d'), (u'FilmNo', u'458'),(u'Language', u'cn')])
-bb = {'FilmNo':u'458',u'FilmType':u'2d',u'Language':u'cn',u'FilmName':u'\u72c2\u517d(2D)'}
 
-#print aa
-#cc = dict(aa)
-#print cc

@@ -43,40 +43,28 @@ class Redis():
         self.cinema_code = cinema_code
         self.session_code = session_code
 
-    def _get_seat_info_from_redis(self,order_by="seat_id"):
-        r = redis.Redis(host="172.16.200.233",port="6379",db=0)
-        string1 = r.hgetall("CACHE:HASH:SESSIONSEAT:{0}:{1}".format(self.cinema_code,self.session_code))
-        dict_list = string1.values()
-        #final_list = List()._sort_dictlist(dict_list,order_by)
-        return dict_list
-
-    def _get_value_list_from_redis22(self,cinema_code,session_code,order_by_key):
+    def _get_seat_info_from_redis(self,seat_status="",order_by="seat_id"):
         '''
         从redis中获取座位数据
+        seat_status为座位状态，可售available，不可售unavailable，\n
+        已锁定locked，已售sold
         '''
-        r = redis.Redis(host="172.16.200.233",port="6379",db=0)
-        string1 = r.hgetall("CACHE:HASH:SESSIONSEAT:{0}:{1}".format(cinema_code,session_code))
-        list1 = string1.values()
-        print list1
-        list_final = []
-        list_sorted = []
-        for i in list1:
-            dict1 = eval(i)
-            if type(dict1[order_by_key]) != int:
-                dict1[order_by_key] = int(dict1[order_by_key])
-                list_sorted.append(dict1)
-        list_sorted.sort(key=operator.itemgetter(order_by_key))
-        for i in list_sorted:
-            i[order_by_key] = str(i[order_by_key])
-            if i["status"] == "available":
-                list_final.append("0")
-            elif i["status"] == "sold":
-                list_final.append("1")
-            elif i["status"] == "locked":
-                list_final.append("3")
-            else:
-                list_final.append("-1")
-        return list_final
+        r = redis.Redis(host=config.mid_info["ip"],port="6379",db=0)
+        string1 = r.hgetall("CACHE:HASH:SESSIONSEAT:{0}:{1}".format(self.cinema_code,self.session_code))
+        dict_list = string1.values()
+        final_list = List()._sort_dictlist(dict_list,order_by)
+        #返回所传状态的座位
+        if seat_status == "":
+            return final_list
+        else:
+            seat_list = []
+            for i in range(len(final_list)):
+                if final_list[i]['status'] == seat_status:
+                    seat_list.append(final_list[i])
+                else:
+                    continue
+            return seat_list
+
 
 class DB():
     def __init__(self,db,table):
@@ -136,6 +124,6 @@ if __name__ == "__main__":
     a = Redis("10000142","15bb78b0d1d24bbb")._get_seat_info_from_redis()
     print a
     print len(a)
-    b = List()._sort_dictlist(a,"seat_id")
+    #b = List()._sort_dictlist(a,"seat_id")
     #print b
 

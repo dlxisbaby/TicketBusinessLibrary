@@ -38,8 +38,21 @@ class String():
             final_string = final_string + i + ","
         return final_string[:-1]
 
+    def _make_all_element_to_unicode(self,obj):
+        if type(obj) == list or type(obj) == tuple:
+            for i in range(len(obj)):
+                obj[i] = String()._make_all_element_to_unicode(obj[i])
+        elif type(obj) == dict:
+            for i in obj:
+                #i = String()._make_all_element_to_unicode(i)
+                obj[i] = String()._make_all_element_to_unicode(obj[i])
+        elif type(obj) != unicode:
+                obj = str(obj).decode("utf-8")
+        return obj
 
 if __name__ == "__main__":
-    a = "aaa"
-    b = String()._check_str_contain_chinese(a)
+    a = [1,2,3]
+    c = {"a":1,"v":2}
+    b = String()._make_all_element_to_unicode(c)
     print b
+
