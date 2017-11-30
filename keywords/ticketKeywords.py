@@ -24,7 +24,7 @@ class TicketKeywords():
     def dlx_select_142database_by_sql(self,sql,db_name=config.cinema_info["mysql_db"],ip=config.cinema_info["ip"],port=3306,user=config.cinema_info["mysql_user"],passwd=config.cinema_info["mysql_passwd"]):
         '''
         使用自写sql查询任意服务器的数据库,返回列表\n
-        :param db_name: 数据吗名称\n
+        :param db_name: 数据库名称\n
         :param sql: 查询语句\n
         :param ip: IP地址\n
         :param port: 端口\n
@@ -32,6 +32,7 @@ class TicketKeywords():
         :param passwd: 密码\n
         '''
         datas = Database(ip,int(port),user,passwd).DB_select_by_sql(db_name,sql)
+        Number()._sure_data_not_null(datas)
         if type(datas[0]) == tuple and len(datas[0]) <= 1:
             data_list = []
             for i in datas:
@@ -43,7 +44,7 @@ class TicketKeywords():
     def dlx_select_Middatabase_by_sql(self,sql,db_name=config.mid_info["mysql_db"],ip=config.mid_info["ip"],port=3306,user=config.mid_info["mysql_user"],passwd=config.mid_info["mysql_passwd"]):
         '''
         使用自写sql查询任意服务器的数据库,返回列表\n
-        :param db_name: 数据吗名称\n
+        :param db_name: 数据库名称\n
         :param sql: 查询语句\n
         :param ip: IP地址\n
         :param port: 端口\n
@@ -51,6 +52,7 @@ class TicketKeywords():
         :param passwd: 密码\n
         '''
         datas = Database(ip,int(port),user,passwd).DB_select_by_sql(db_name,sql)
+        Number()._sure_data_not_null(datas)
         if type(datas[0]) == tuple and len(datas[0]) <= 1:
             data_list = []
             for i in datas:
@@ -62,7 +64,7 @@ class TicketKeywords():
     def dlx_select_database_by_sql(self,sql,db_name,ip,port,user,passwd):
         '''
         使用自写sql查询任意服务器的数据库,返回列表\n
-        :param db_name: 数据吗名称\n
+        :param db_name: 数据库名称\n
         :param sql: 查询语句\n
         :param ip: IP地址\n
         :param port: 端口\n
@@ -70,6 +72,7 @@ class TicketKeywords():
         :param passwd: 密码\n
         '''
         datas = Database(ip,int(port),user,passwd).DB_select_by_sql(db_name,sql)
+        Number()._sure_data_not_null(datas)
         if type(datas[0]) == tuple and len(datas[0]) <= 1:
             data_list = []
             for i in datas:

@@ -51,3 +51,9 @@ class Number():
                     if j == fields:
                         i[j] = str(float(i[j])).decode("utf-8")
         return dict_list
+
+    def _sure_data_not_null(self,obj):
+        if len(obj) == 0:
+            raise ValueError(u"此数据为空")
+        else:
+            return obj
