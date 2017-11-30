@@ -39,7 +39,7 @@ class Database():
         return datas
 
 class Redis():
-    def __init__(self,cinema_code,session_code):
+    def __init__(self,cinema_code='',session_code=''):
         self.cinema_code = cinema_code
         self.session_code = session_code
 
@@ -49,6 +49,8 @@ class Redis():
         seat_status为座位状态，可售available，不可售unavailable，\n
         已锁定locked，已售sold
         '''
+        if self.cinema_code == '' or self.session_code == '':
+            raise ValueError(u"cinema_code和session_code为必填项")
         r = redis.Redis(host=config.mid_info["ip"],port="6379",db=0)
         string1 = r.hgetall("CACHE:HASH:SESSIONSEAT:{0}:{1}".format(self.cinema_code,self.session_code))
         dict_list = string1.values()
@@ -65,6 +67,64 @@ class Redis():
                     continue
             return seat_list
 
+    def _get_status_list_from_redis(self,seat_info_list):
+        '''
+        返回座位状态的列表
+        seat_info_list:座位信息字典列表
+        '''
+        final_list = []
+        for i in seat_info_list:
+            if i['status'] == "available":
+                final_list.append(0)
+            elif i['status'] == "sold":
+                final_list.append(1)
+            elif i['status'] == "locked":
+                final_list.append(3)
+            else:
+                 final_list.append(-1)
+        return final_list
+
+    def _get_seat_info_from_dictlist(self,dictlist,seat_id,key=''):
+        '''
+        获取指定座位id的key的值
+        :param dictlist:所有座位信息的字典列表
+        :param seat_id:座位id
+        :param key:需要获取的key
+        '''
+        seat_id = str(seat_id)
+        for i in dictlist:
+            if key == "":
+                if i["seat_id"] == seat_id:
+                    return i
+            elif key not in i.keys():
+                raise ValueError(u"key输入错误，不存在这个key")
+            else:
+                if i["seat_id"] == seat_id:
+                    logger.info(i[key])
+                    return i[key]
+
+    def _get_available_seatid_from_dictlist(self,dictlist,num="1"):
+        '''
+        获取可用座位的ID
+        :param dictlist: 所有座位信息的字典列表
+        num为返回的ID数量，默认为1
+        '''
+        if num == "1":
+            for i in dictlist:
+                if i["status"] == "available":
+                    return i["seat_id"]
+        else:
+            try:
+                num = int(num)
+                final_string = ""
+                for i in dictlist:
+                    if i["status"] == "available":
+                        final_string = final_string + str(i["seat_id"]) + ","
+                    if len(final_string.split(",")) == num+1:
+                        break
+                return final_string[:-1]
+            except ValueError:
+                raise ValueError(u"num参数必须是整数")
 
 class DB():
     def __init__(self,db,table):
@@ -121,9 +181,11 @@ class Handle():
         return fetchall
 
 if __name__ == "__main__":
-    a = Redis("10000142","15bb78b0d1d24bbb")._get_seat_info_from_redis()
-    print a
-    print len(a)
-    #b = List()._sort_dictlist(a,"seat_id")
-    #print b
-
+    a = Redis("10000142","42f5db4a353c746b")._get_seat_info_from_redis()
+    #print a
+    b = Redis()._get_available_seatid_from_dictlist(a,"3")
+    print b
+    #aa = ''
+    #bb = aa.join("444")
+    #cc = bb.join("222")
+    #print cc

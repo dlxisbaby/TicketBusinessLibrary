@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86d40ace-9666-4024-8767-d5c4d6b97595" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.py" afterPath="$PROJECT_DIR$/config.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/keywords/ticketKeywords.py" afterPath="$PROJECT_DIR$/keywords/ticketKeywords.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/methods/aboutDB.py" afterPath="$PROJECT_DIR$/methods/aboutDB.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/methods/aboutDict.py" afterPath="$PROJECT_DIR$/methods/aboutDict.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/methods/aboutList.py" afterPath="$PROJECT_DIR$/methods/aboutList.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/methods/aboutString.py" afterPath="$PROJECT_DIR$/methods/aboutString.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,8 +21,8 @@
       <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="537">
-              <caret line="93" column="0" lean-forward="true" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+            <state relative-caret-position="1488">
+              <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -30,7 +31,7 @@
       <file leaf-file-name="excelTable.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/methods/excelTable.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
+            <state relative-caret-position="240">
               <caret line="15" column="26" lean-forward="false" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
               <folding />
             </state>
@@ -40,23 +41,18 @@
       <file leaf-file-name="ticketKeywords.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/keywords/ticketKeywords.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="627">
-              <caret line="105" column="38" lean-forward="true" selection-start-line="105" selection-start-column="38" selection-end-line="105" selection-end-column="38" />
-              <folding>
-                <element signature="e#5410#7268#0" expanded="false" />
-                <element signature="e#10706#14555#1" expanded="false" />
-                <element signature="e#16824#17822#0" expanded="false" />
-                <element signature="e#17835#21937#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="433">
+              <caret line="413" column="36" lean-forward="true" selection-start-line="413" selection-start-column="36" selection-end-line="413" selection-end-column="36" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="aboutString.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="aboutString.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/methods/aboutString.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="47" column="21" lean-forward="false" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
+            <state relative-caret-position="175">
+              <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="60" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -65,8 +61,8 @@
       <file leaf-file-name="aboutDict.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/methods/aboutDict.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="21" column="18" lean-forward="false" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="18" />
+            <state relative-caret-position="336">
+              <caret line="21" column="37" lean-forward="false" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -75,8 +71,8 @@
       <file leaf-file-name="aboutList.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/methods/aboutList.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="157" column="32536" lean-forward="false" selection-start-line="157" selection-start-column="32536" selection-end-line="157" selection-end-column="32536" />
+            <state relative-caret-position="383">
+              <caret line="156" column="26" lean-forward="false" selection-start-line="156" selection-start-column="26" selection-end-line="156" selection-end-column="26" />
               <folding>
                 <element signature="e#15#42#0" expanded="true" />
               </folding>
@@ -84,15 +80,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="aboutDB.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="aboutDB.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/methods/aboutDB.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="60" column="44" lean-forward="true" selection-start-line="60" selection-start-column="44" selection-end-line="60" selection-end-column="44" />
+            <state relative-caret-position="161">
+              <caret line="121" column="77" lean-forward="false" selection-start-line="121" selection-start-column="77" selection-end-line="121" selection-end-column="77" />
               <folding>
-                <element signature="e#2368#2658#0" expanded="false" />
-                <element signature="e#2683#3294#0" expanded="false" />
-                <element signature="e#3316#3765#0" expanded="false" />
+                <element signature="e#4385#4675#0" expanded="false" />
+                <element signature="e#4700#5311#0" expanded="false" />
+                <element signature="e#5333#5782#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -111,6 +107,7 @@
     <findStrings>
       <find>dlx_ass</find>
       <find>dlx_sql</find>
+      <find>get_n_</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -135,12 +132,12 @@
         <option value="$PROJECT_DIR$/methods/aboutFile.py" />
         <option value="$PROJECT_DIR$/methods/aboutNumber.py" />
         <option value="$PROJECT_DIR$/methods/aboutOrderedDict.py" />
-        <option value="$PROJECT_DIR$/methods/aboutList.py" />
         <option value="$PROJECT_DIR$/config.py" />
-        <option value="$PROJECT_DIR$/methods/aboutDB.py" />
-        <option value="$PROJECT_DIR$/keywords/ticketKeywords.py" />
         <option value="$PROJECT_DIR$/methods/aboutDict.py" />
+        <option value="$PROJECT_DIR$/methods/aboutList.py" />
         <option value="$PROJECT_DIR$/methods/aboutString.py" />
+        <option value="$PROJECT_DIR$/keywords/ticketKeywords.py" />
+        <option value="$PROJECT_DIR$/methods/aboutDB.py" />
       </list>
     </option>
   </component>
@@ -212,7 +209,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.aboutString">
+  <component name="RunManager" selected="Python.aboutDB">
     <configuration name="aboutDB" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -307,11 +304,11 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.aboutString" />
-        <item index="1" class="java.lang.String" itemvalue="Python.aboutDB" />
-        <item index="2" class="java.lang.String" itemvalue="Python.config" />
-        <item index="3" class="java.lang.String" itemvalue="Python.aboutList" />
-        <item index="4" class="java.lang.String" itemvalue="Python.ticketKeywords" />
+        <item index="0" class="java.lang.String" itemvalue="Python.aboutDB" />
+        <item index="1" class="java.lang.String" itemvalue="Python.aboutString" />
+        <item index="2" class="java.lang.String" itemvalue="Python.ticketKeywords" />
+        <item index="3" class="java.lang.String" itemvalue="Python.config" />
+        <item index="4" class="java.lang.String" itemvalue="Python.aboutList" />
       </list>
     </recent_temporary>
   </component>
@@ -322,12 +319,12 @@
     <configuration />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11567164" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11696658" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32857144" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26842105" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26753247" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32910448" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -443,12 +440,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="704">
           <caret line="44" column="26" lean-forward="true" selection-start-line="44" selection-start-column="26" selection-end-line="44" selection-end-column="26" />
-          <folding>
-            <element signature="e#5410#7268#0" expanded="false" />
-            <element signature="e#10706#14555#1" expanded="false" />
-            <element signature="e#16824#17822#0" expanded="false" />
-            <element signature="e#17835#21937#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -479,12 +471,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
           <caret line="4" column="23" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-          <folding>
-            <element signature="e#5410#7268#0" expanded="false" />
-            <element signature="e#10706#14555#1" expanded="false" />
-            <element signature="e#16824#17822#0" expanded="false" />
-            <element signature="e#17835#21937#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -537,12 +524,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
           <caret line="4" column="23" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-          <folding>
-            <element signature="e#5410#7268#0" expanded="false" />
-            <element signature="e#10706#14555#1" expanded="false" />
-            <element signature="e#16824#17822#0" expanded="false" />
-            <element signature="e#17835#21937#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -595,12 +577,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
           <caret line="4" column="23" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-          <folding>
-            <element signature="e#5410#7268#0" expanded="false" />
-            <element signature="e#10706#14555#1" expanded="false" />
-            <element signature="e#16824#17822#0" expanded="false" />
-            <element signature="e#17835#21937#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -673,7 +650,7 @@
     <entry file="file://$PROJECT_DIR$/methods/aboutTime.py" />
     <entry file="file://$PROJECT_DIR$/methods/excelTable.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
+        <state relative-caret-position="240">
           <caret line="15" column="26" lean-forward="false" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
           <folding />
         </state>
@@ -682,62 +659,57 @@
     <entry file="file://$PROJECT_DIR$/methods/aboutNumber.py" />
     <entry file="file://$PROJECT_DIR$/methods/aboutFile.py" />
     <entry file="file://$PROJECT_DIR$/methods/aboutXML.py" />
+    <entry file="file://$PROJECT_DIR$/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1488">
+          <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/methods/aboutDict.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="21" column="37" lean-forward="false" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/methods/aboutList.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="157" column="32536" lean-forward="false" selection-start-line="157" selection-start-column="32536" selection-end-line="157" selection-end-column="32536" />
+        <state relative-caret-position="383">
+          <caret line="156" column="26" lean-forward="false" selection-start-line="156" selection-start-column="26" selection-end-line="156" selection-end-column="26" />
           <folding>
             <element signature="e#15#42#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.py">
+    <entry file="file://$PROJECT_DIR$/methods/aboutString.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="93" column="0" lean-forward="true" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+        <state relative-caret-position="175">
+          <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="60" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/keywords/ticketKeywords.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="105" column="38" lean-forward="true" selection-start-line="105" selection-start-column="38" selection-end-line="105" selection-end-column="38" />
-          <folding>
-            <element signature="e#5410#7268#0" expanded="false" />
-            <element signature="e#10706#14555#1" expanded="false" />
-            <element signature="e#16824#17822#0" expanded="false" />
-            <element signature="e#17835#21937#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="433">
+          <caret line="413" column="36" lean-forward="true" selection-start-line="413" selection-start-column="36" selection-end-line="413" selection-end-column="36" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/methods/aboutDB.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="60" column="44" lean-forward="true" selection-start-line="60" selection-start-column="44" selection-end-line="60" selection-end-column="44" />
+        <state relative-caret-position="161">
+          <caret line="121" column="77" lean-forward="false" selection-start-line="121" selection-start-column="77" selection-end-line="121" selection-end-column="77" />
           <folding>
-            <element signature="e#2368#2658#0" expanded="false" />
-            <element signature="e#2683#3294#0" expanded="false" />
-            <element signature="e#3316#3765#0" expanded="false" />
+            <element signature="e#4385#4675#0" expanded="false" />
+            <element signature="e#4700#5311#0" expanded="false" />
+            <element signature="e#5333#5782#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/methods/aboutDict.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="21" column="18" lean-forward="false" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/methods/aboutString.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="47" column="21" lean-forward="false" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>

@@ -102,7 +102,6 @@ class TicketKeywords():
         :param expect: 预期结果\n
         :param actual: 实际结果\n
         '''
-
         if str(expect) == str(actual):
             logger.info(u"预期与实际结果相同")
         else:
@@ -389,6 +388,31 @@ class TicketKeywords():
         '''
         return Redis(cinema_code,session_code)._get_seat_info_from_redis(seat_status,order_by)
 
+    def dlx_get_status_list_from_redis(self,dict_list):
+        '''
+        返回座位状态的列表
+        dict_list:座位信息字典列表
+        可售0，已售1，锁座3，不可售-1
+        '''
+        return Redis()._get_status_list_from_redis(dict_list)
+
+    def dlx_get_seat_info_from_dictlist(self,dictlist,seat_id,key=''):
+        '''
+        获取指定座位id的key的值
+        :param dictlist:所有座位信息的字典列表
+        :param seat_id:座位id
+        :param key:需要获取的key
+        '''
+        return Redis()._get_seat_info_from_dictlist(dictlist,seat_id,key)
+
+    def dlx_get_available_seatid_from_dictlist(self,dictlist,num="1"):
+        '''
+        获取可用座位的ID
+        :param dictlist: 所有座位信息的字典列表
+        num为返回的ID数量，默认为1
+        '''
+        return Redis()._get_available_seatid_from_dictlist(dictlist,num)
+
     def dlx_convert_dict_list_to_float(self,dict_list,fields):
         '''
         将dict_list中的字典的字段值转化为float类型
@@ -430,6 +454,13 @@ class TicketKeywords():
         '''
         return List()._get_n_length_same_value_list(n,value,mode)
 
+    def dlx_get_n_length_random_num(self,n,mode="1"):
+        '''
+        获取一个N位长度的随机数，mode为1时返回字符串格式\n
+        mode为2时返回整型格式
+        :param n: 返回的长度
+        '''
+        return String()._get_n_length_random_num(n,mode)
 
 if __name__ == "__main__":
     xml1 ="""<?xml version="1.0"?>
@@ -573,9 +604,10 @@ if __name__ == "__main__":
     a = [1.20,2.3,3.40,4.00,40.00]
 
 
-    b = TicketKeywords().dlx_get_seat_info_from_redis("10000142","d02dd5c319c24af9")
-    print b
-    print len(b)
+    b = TicketKeywords().dlx_get_seat_info_from_redis("10000142","7b9b7d6cd411acb2")
+    c = TicketKeywords().dlx_get_seat_info_from_dictlist(b,4617)
+    print c
+    #print len(b)
 
 
 

@@ -3,6 +3,7 @@
 import sys,hashlib
 reload(sys)
 sys.setdefaultencoding('utf8')
+from random import Random
 
 
 class String():
@@ -44,15 +45,32 @@ class String():
                 obj[i] = String()._make_all_element_to_unicode(obj[i])
         elif type(obj) == dict:
             for i in obj:
-                #i = String()._make_all_element_to_unicode(i)
-                obj[i] = String()._make_all_element_to_unicode(obj[i])
+                temp_key = String()._make_all_element_to_unicode(i)
+                temp_value = String()._make_all_element_to_unicode(obj[i])
+                obj.pop(i)
+                obj[temp_key] = temp_value
         elif type(obj) != unicode:
                 obj = str(obj).decode("utf-8")
         return obj
 
+    def _get_n_length_random_num(self,n,mode="1"):
+        '''
+        获取一个N位长度的随机数，mode为1时返回字符串格式\n
+        mode为2时返回整型格式
+        :param n: 返回的长度
+        '''
+        n = int(n)
+        min = 10**(n-1)
+        max = 10**n-1
+        num = Random().randint(min,max)
+        if mode == "1":
+            return str(num)
+        elif mode == "2":
+            return num
+
 if __name__ == "__main__":
     a = [1,2,3]
-    c = {"a":1,"v":2}
-    b = String()._make_all_element_to_unicode(c)
-    print b
+    c = [{"a":"a","v":2},3,3]
+    b = String()._get_n_length_random_num(12)
+    #print b
 

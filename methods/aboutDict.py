@@ -33,14 +33,22 @@ class Dict():
             raise ValueError(u"名称列表与值列表长度不一致")
         final_list = []
         dict1 = {}
-        for i in range(len(level_value_list[0])):
-            for j in range(len(level_name_list)):
-                if type(level_value_list[j][i]) == unicode:
-                    dict1[level_name_list[j]] = level_value_list[j][i]
+        if type(level_value_list[0]) == list or type(level_value_list[0]) == tuple:
+            for i in range(len(level_value_list[0])):
+                for j in range(len(level_name_list)):
+                    if type(level_value_list[j][i]) == unicode:
+                        dict1[level_name_list[j]] = level_value_list[j][i]
+                    else:
+                        dict1[level_name_list[j]] = str(level_value_list[j][i]).decode("utf-8")
+                temp = dict1.copy()
+                final_list.append(temp)
+        else:
+            for i in range(len(level_name_list)):
+                if type(level_value_list[i]) == unicode:
+                    dict1[level_name_list[i]] = level_value_list[i]
                 else:
-                    dict1[level_name_list[j]] = str(level_value_list[j][i]).decode("utf-8")
-            temp = dict1.copy()
-            final_list.append(temp)
+                    dict1[level_name_list[i]] = str(level_value_list[i]).decode("utf-8")
+            final_list.append(dict1)
         dict2 = {}
         final_list2 = []
         for i in final_list:
