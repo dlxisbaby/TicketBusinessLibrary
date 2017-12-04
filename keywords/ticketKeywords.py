@@ -139,7 +139,9 @@ class TicketKeywords():
         :param level_tag_names: xml响应的层级标签
         '''
         dict_list = Xml(xml_code)._xml_to_dict_list(*level_tag_names)._order_by(order_by)._except_pass_tags(pass_tag_list)
-        return Dict()._orderdict_to_dict(dict_list)
+        dict_list2 = Dict()._orderdict_to_dict(dict_list)
+        #print dict_list
+        return dict_list2
 
     def dlx_check_contain_chinese(self,check_str):
         '''
@@ -604,13 +606,12 @@ if __name__ == "__main__":
     </Sessions>
 </GetCinemaSessionResult>
 """
-    a = [1.20,2.3,3.40,4.00,40.00]
+    aa = [{u'CinemaNo': u'18', u'SessionDate': u'1490623800', u'TicketSum': u'3', u'FilmNo': u'75', u'Price': u'315.00', u'SessionNo': u'12201', u'SeatInfos': {u'SeatInfo': [OrderedDict([(u'SeatNo', u'15912')]), OrderedDict([(u'SeatNo', u'15913')]), OrderedDict([(u'SeatNo', u'15914')])]}, u'OrderStatus': u'1', u'RefundDate': u'0', u'OrderNo': u'12201349209441055', u'BuyDate': u'1490623187'}, {u'CinemaNo': u'18', u'SessionDate': u'1490623800', u'TicketSum': u'1', u'FilmNo': u'75', u'Price': u'105.00', u'SessionNo': u'12201', u'SeatInfos': {u'SeatInfo': {u'SeatNo': u'15911'}}, u'OrderStatus': u'1', u'RefundDate': u'0', u'OrderNo': u'12201994350291240', u'BuyDate': u'1490623101'}]
 
 
-    b = TicketKeywords().dlx_get_seat_info_from_redis("10000142","7b9b7d6cd411acb2")
-    c = TicketKeywords().dlx_get_seat_info_from_dictlist(b,4617)
-    print c
-    #print len(b)
+
+    b = TicketKeywords().dlx_xml_to_dictlist(xml2,'',[],"GetCinemaSessionResult","Sessions","Session")
+    print b
 
 
 

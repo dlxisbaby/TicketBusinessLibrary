@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="86d40ace-9666-4024-8767-d5c4d6b97595" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/keywords/ticketKeywords.py" afterPath="$PROJECT_DIR$/keywords/ticketKeywords.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/methods/aboutDict.py" afterPath="$PROJECT_DIR$/methods/aboutDict.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,7 +18,7 @@
       <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1488">
+            <state relative-caret-position="399">
               <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
               <folding />
             </state>
@@ -34,43 +35,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ticketKeywords.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ticketKeywords.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/keywords/ticketKeywords.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="496">
-              <caret line="52" column="11" lean-forward="true" selection-start-line="52" selection-start-column="11" selection-end-line="52" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="aboutNumber.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/methods/aboutNumber.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="848">
-              <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+            <state relative-caret-position="145">
+              <caret line="385" column="35" lean-forward="true" selection-start-line="385" selection-start-column="35" selection-end-line="385" selection-end-column="35" />
               <folding>
-                <marker date="1512095090056" expanded="true" signature="30:1512" ph="..." />
+                <element signature="e#17979#18977#0" expanded="false" />
+                <element signature="e#18990#23092#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="aboutString.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/methods/aboutString.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1168">
-              <caret line="73" column="0" lean-forward="false" selection-start-line="74" selection-start-column="5" selection-end-line="76" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="aboutDict.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="aboutDict.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/methods/aboutDict.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="21" column="37" lean-forward="false" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="37" />
+            <state relative-caret-position="209">
+              <caret line="100" column="26" lean-forward="true" selection-start-line="100" selection-start-column="26" selection-end-line="100" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -79,8 +61,8 @@
       <file leaf-file-name="aboutList.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/methods/aboutList.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2432">
-              <caret line="156" column="26" lean-forward="false" selection-start-line="156" selection-start-column="26" selection-end-line="156" selection-end-column="26" />
+            <state relative-caret-position="-1953">
+              <caret line="12" column="33" lean-forward="false" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="33" />
               <folding>
                 <element signature="e#15#42#0" expanded="true" />
               </folding>
@@ -91,8 +73,8 @@
       <file leaf-file-name="aboutDB.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/methods/aboutDB.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2896">
-              <caret line="181" column="0" lean-forward="false" selection-start-line="181" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
+            <state relative-caret-position="503">
+              <caret line="169" column="0" lean-forward="true" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -136,16 +118,16 @@
         <option value="$PROJECT_DIR$/methods/aboutFile.py" />
         <option value="$PROJECT_DIR$/methods/aboutOrderedDict.py" />
         <option value="$PROJECT_DIR$/config.py" />
-        <option value="$PROJECT_DIR$/methods/aboutDict.py" />
         <option value="$PROJECT_DIR$/methods/aboutList.py" />
         <option value="$PROJECT_DIR$/methods/aboutString.py" />
         <option value="$PROJECT_DIR$/methods/aboutDB.py" />
         <option value="$PROJECT_DIR$/methods/aboutNumber.py" />
         <option value="$PROJECT_DIR$/keywords/ticketKeywords.py" />
+        <option value="$PROJECT_DIR$/methods/aboutDict.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="80" />
     <option name="width" value="1400" />
     <option name="height" value="867" />
@@ -181,6 +163,11 @@
               <item name="TicketBusinessLibrary" type="462c0819:PsiDirectoryNode" />
               <item name="keywords" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="TicketBusinessLibrary" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TicketBusinessLibrary" type="462c0819:PsiDirectoryNode" />
+              <item name="methods" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -208,7 +195,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.aboutDB">
+  <component name="RunManager" selected="Python.ticketKeywords">
     <configuration name="aboutDB" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -226,7 +213,7 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
-    <configuration name="aboutList" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="aboutDict" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -238,7 +225,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="TicketBusinessLibrary" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/methods/aboutList.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/methods/aboutDict.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -298,16 +285,16 @@
       <item index="0" class="java.lang.String" itemvalue="Python.ticketKeywords" />
       <item index="1" class="java.lang.String" itemvalue="Python.config" />
       <item index="2" class="java.lang.String" itemvalue="Python.aboutDB" />
-      <item index="3" class="java.lang.String" itemvalue="Python.aboutList" />
-      <item index="4" class="java.lang.String" itemvalue="Python.aboutString" />
+      <item index="3" class="java.lang.String" itemvalue="Python.aboutString" />
+      <item index="4" class="java.lang.String" itemvalue="Python.aboutDict" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.aboutDB" />
-        <item index="1" class="java.lang.String" itemvalue="Python.aboutString" />
-        <item index="2" class="java.lang.String" itemvalue="Python.ticketKeywords" />
-        <item index="3" class="java.lang.String" itemvalue="Python.config" />
-        <item index="4" class="java.lang.String" itemvalue="Python.aboutList" />
+        <item index="0" class="java.lang.String" itemvalue="Python.ticketKeywords" />
+        <item index="1" class="java.lang.String" itemvalue="Python.aboutDict" />
+        <item index="2" class="java.lang.String" itemvalue="Python.aboutDB" />
+        <item index="3" class="java.lang.String" itemvalue="Python.aboutString" />
+        <item index="4" class="java.lang.String" itemvalue="Python.config" />
       </list>
     </recent_temporary>
   </component>
@@ -318,12 +305,13 @@
     <configuration />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12082262" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18830334" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32857144" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26753247" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32910448" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -331,12 +319,10 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985073" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" x="0" y="0" width="600" height="620" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26753247" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -440,7 +426,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="704">
           <caret line="44" column="26" lean-forward="true" selection-start-line="44" selection-start-column="26" selection-end-line="44" selection-end-column="26" />
-          <folding />
+          <folding>
+            <element signature="e#17979#18977#0" expanded="false" />
+            <element signature="e#18990#23092#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -471,7 +460,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
           <caret line="4" column="23" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-          <folding />
+          <folding>
+            <element signature="e#17979#18977#0" expanded="false" />
+            <element signature="e#18990#23092#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -524,7 +516,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
           <caret line="4" column="23" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-          <folding />
+          <folding>
+            <element signature="e#17979#18977#0" expanded="false" />
+            <element signature="e#18990#23092#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -577,7 +572,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
           <caret line="4" column="23" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-          <folding />
+          <folding>
+            <element signature="e#17979#18977#0" expanded="false" />
+            <element signature="e#18990#23092#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -648,6 +646,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/methods/xmlAbout.py" />
     <entry file="file://$PROJECT_DIR$/methods/aboutTime.py" />
+    <entry file="file://$PROJECT_DIR$/methods/aboutXML.py" />
     <entry file="file://$PROJECT_DIR$/methods/excelTable.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -656,64 +655,73 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/methods/aboutFile.py" />
-    <entry file="file://$PROJECT_DIR$/methods/aboutXML.py" />
-    <entry file="file://$PROJECT_DIR$/config.py">
+    <entry file="file://$PROJECT_DIR$/methods/aboutFile.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1488">
-          <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/methods/aboutDict.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="21" column="37" lean-forward="false" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/methods/aboutList.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2432">
-          <caret line="156" column="26" lean-forward="false" selection-start-line="156" selection-start-column="26" selection-end-line="156" selection-end-column="26" />
-          <folding>
-            <element signature="e#15#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/methods/aboutString.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1168">
-          <caret line="73" column="0" lean-forward="false" selection-start-line="74" selection-start-column="5" selection-end-line="76" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/methods/aboutDB.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2896">
-          <caret line="181" column="0" lean-forward="false" selection-start-line="181" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/methods/aboutNumber.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="848">
-          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+        <state relative-caret-position="96">
+          <caret line="6" column="31" lean-forward="false" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="31" />
           <folding>
             <marker date="1512095090056" expanded="true" signature="30:1512" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/methods/aboutString.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="42" column="51" lean-forward="true" selection-start-line="42" selection-start-column="51" selection-end-line="42" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/methods/aboutDB.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="503">
+          <caret line="169" column="0" lean-forward="true" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/keywords/ticketKeywords.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
-          <caret line="52" column="11" lean-forward="true" selection-start-line="52" selection-start-column="11" selection-end-line="52" selection-end-column="11" />
+        <state relative-caret-position="145">
+          <caret line="385" column="35" lean-forward="true" selection-start-line="385" selection-start-column="35" selection-end-line="385" selection-end-column="35" />
+          <folding>
+            <element signature="e#17979#18977#0" expanded="false" />
+            <element signature="e#18990#23092#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/methods/aboutList.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1953">
+          <caret line="12" column="33" lean-forward="false" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="33" />
+          <folding>
+            <element signature="e#15#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/methods/aboutDict.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="100" column="26" lean-forward="true" selection-start-line="100" selection-start-column="26" selection-end-line="100" selection-end-column="26" />
           <folding />
         </state>
       </provider>
