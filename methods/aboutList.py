@@ -151,6 +151,11 @@ class List():
         except ValueError:
             raise ValueError(u"排序的key不是数字")
 
+    def _sum_list(self,num_list):
+        for i in num_list:
+            i = int(i)
+        return sum(num_list)
+
 
 
 

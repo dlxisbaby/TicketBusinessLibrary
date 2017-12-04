@@ -370,14 +370,17 @@ class TicketKeywords():
                 list_final.append(ordered_dict)
                 return list_final
     """
-    def dlx_make_list_to_dict_list(self,up_level,level_name_list,*level_value_list):
+    def dlx_make_list_to_dict_list(self,up_level,level_name_list,group_list='',*level_value_list):
         '''
         生成一个字典列表
         :param up_level: 上级名称
         :param level_name_list: 层级名称列表level_name_list=[u'FilmNo', u'FilmName', u'FilmType', u'Language']
         :param level_value_list: 层级值列表，需要与层级名称列表中的值一一对应FilmNo_list,FilmName_list,FilmType_list,Language_list
         '''
-        return Dict()._make_list_to_dict_list(up_level,level_name_list,*level_value_list)
+        if group_list == '':
+            return Dict()._make_list_to_dict_list(up_level,level_name_list,*level_value_list)
+        else:
+            return Dict()._make_list_to_dict_list_with_group(up_level,group_list,level_name_list,*level_value_list)
 
     def dlx_contact_two_dict_list(self,list_main,list_order,key_name):
         '''

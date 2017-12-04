@@ -1,6 +1,7 @@
 #coding:utf-8
 
 from collections import OrderedDict
+from TicketBusinessLibrary.methods.aboutList import List
 
 class Dict():
     def __init__(self):
@@ -64,7 +65,7 @@ class Dict():
             final_list2.append(temp)
         return final_list2
 
-    def _make_list_to_dict_list_with_group(self,up_level,level_name_list,group_list,*level_value_list):
+    def _make_list_to_dict_list_with_group(self,up_level,group_list,level_name_list,*level_value_list):
         '''
         生成一个字典列表
         up_level: 比level_name更上一级的名称
@@ -93,26 +94,27 @@ class Dict():
                     dict1[level_name_list[i]] = str(level_value_list[i]).decode("utf-8")
             final_list.append(dict1)
         dict2 = {}
-        final_list2 = []
-        for i in final_list:
-            dict2[up_level] = i
-            temp = dict2.copy()
-            final_list2.append(temp)
-        return final_list2
+        final_list3 = []
+        for k in group_list:
+            temp_list = []
+            for i in range(len(final_list)):
+                if i != int(k):
+                    temp_list.append(final_list[i])
+                else:
+                    dict2[up_level] = temp_list
+                    final_list3.append(dict2.copy())
+                    break
+        return final_list3
 
 if __name__ == "__main__":
-    # aa = {u'Films': OrderedDict([(u'Film', OrderedDict([(u'FilmNo', u'458'), (u'FilmName', u'\u72c2\u517d(2D)'), (u'FilmType', u'2d'), (u'Language', u'cn')]))])}
-    # FilmNo_list = [183, 439, 458, 438, 183, 439]
-    # FilmName_list = [u'\u6e44\u516c\u6cb3\u884c\u52a8(\u4e2d\u56fd\u5de8\u5e55)', u'\u4e5d\u4e00\u516b(\u5f71\u5c55\u89c2\u6469\u7247)', u'\u72c2\u517d(2D)', u'\u5206\u7c7b\u7ec6\u5316(\u4e2d\u56fd\u5de8\u5e553D22)',u'\u6e44\u516c\u6cb3\u884c\u52a8(\u4e2d\u56fd\u5de8\u5e55)', u'\u4e5d\u4e00\u516b(\u5f71\u5c55\u89c2\u6469\u7247)']
-    # FilmType_list = [u'3d', u'view', u'2d', u'dmax3d', u'3d', u'view']
-    # Language_list = [u'cn', u'cn', u'cn', u'cn', u'cn', u'cn']
-    #
-    # level_name_list = [u'FilmNo', u'FilmName', u'FilmType', u'Language']
-
 
     group_list = [3, 1, 3]
     up_level = "SeatInfo"
-    level_name_list = ["SeatNo"]
+    level_name_list = ["SeatNo","SeatNo2"]
     seat_no_list = [15912, 15913, 15914, 15911, 27529, 27530, 27531]
+    seat_no_list2 = [15912, 15913, 15914, 15911, 27529, 27530, 27531]
 
+    a = Dict()._make_list_to_dict_list_with_group(up_level,group_list,level_name_list,seat_no_list,seat_no_list2)
+    #print a
+    #print len(a)
 
