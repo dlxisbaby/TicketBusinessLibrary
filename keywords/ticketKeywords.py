@@ -33,10 +33,14 @@ class TicketKeywords():
         '''
         datas = Database(ip,int(port),user,passwd).DB_select_by_sql(db_name,sql)
         Number()._sure_data_not_null(datas)
+        # print datas
         if type(datas[0]) == tuple and len(datas[0]) <= 1:
             data_list = []
             for i in datas:
-                data_list.append(i[0])
+                if i[0] == '':
+                    data_list.append(None)
+                else:
+                    data_list.append(i[0])
             return data_list
         else:
             return datas
@@ -116,7 +120,7 @@ class TicketKeywords():
                 raise AssertionError(msg)
 
 
-    def dlx_assert_xml_resp_code(self,expect,actual):
+    def dlx_assert_xml_resp_code(self,expect,actual,msg=''):
         '''
         验证预期结果与实际结果是否相同\n
         :param expect: 预期结果\n
@@ -128,7 +132,10 @@ class TicketKeywords():
         else:
             logger.info(u"预期状态为：{0}\"{1}\"".format(expect,config.resp_code[expect]))
             logger.info(u"实际状态为：{0}\"{1}\"".format(actual,config.resp_code[actual]))
-            raise AssertionError(u"返回的状态与预期不相符")
+            if msg == '':
+                raise AssertionError(u"返回的状态与预期不相符")
+            else:
+                raise AssertionError(msg)
 
     def dlx_xml_to_dictlist(self,xml_code,order_by='',pass_tag_list=[],*level_tag_names):
         '''
@@ -282,9 +289,10 @@ class TicketKeywords():
         形成字典，以此类推，最后生成值为字典的列表\n
         '''
         if type(tag_value_lists[0]) == list or type(tag_value_lists[0]) == tuple:
-            return List()._sql_list_to_dict_list(tag_name_list,*tag_value_lists)
+            final_list = List()._sql_list_to_dict_list(tag_name_list,*tag_value_lists)
         else:
-            return List()._sql_single_to_dict(tag_name_list,*tag_value_lists)
+            final_list = List()._sql_single_to_dict(tag_name_list,*tag_value_lists)
+        return String()._remove_none_decode(final_list)
 
     def dlx_get_php_config_key_value(self,server_ip,remote_path,keyname):
         '''
@@ -612,9 +620,11 @@ if __name__ == "__main__":
     aa = [{u'CinemaNo': u'18', u'SessionDate': u'1490623800', u'TicketSum': u'3', u'FilmNo': u'75', u'Price': u'315.00', u'SessionNo': u'12201', u'SeatInfos': {u'SeatInfo': [OrderedDict([(u'SeatNo', u'15912')]), OrderedDict([(u'SeatNo', u'15913')]), OrderedDict([(u'SeatNo', u'15914')])]}, u'OrderStatus': u'1', u'RefundDate': u'0', u'OrderNo': u'12201349209441055', u'BuyDate': u'1490623187'}, {u'CinemaNo': u'18', u'SessionDate': u'1490623800', u'TicketSum': u'1', u'FilmNo': u'75', u'Price': u'105.00', u'SessionNo': u'12201', u'SeatInfos': {u'SeatInfo': {u'SeatNo': u'15911'}}, u'OrderStatus': u'1', u'RefundDate': u'0', u'OrderNo': u'12201994350291240', u'BuyDate': u'1490623101'}]
 
 
-
-    b = TicketKeywords().dlx_xml_to_dictlist(xml2,'',[],"GetCinemaSessionResult","Sessions","Session")
+    tag_name_list = ["Mobile"]
+    b = TicketKeywords().dlx_select_142database_by_sql("SELECT mobile FROM tms_card_customer where card_no='111'")
+    c = TicketKeywords().dlx_sql_result_to_dictlist(tag_name_list,b)
     print b
+    print c
 
 
 

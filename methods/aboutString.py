@@ -68,6 +68,18 @@ class String():
         elif mode == "2":
             return num
 
+    def _remove_none_decode(self,obj):
+        if type(obj) == list or type(obj) == tuple:
+            for i in obj:
+                self._remove_none_decode(i)
+        elif type(obj) == dict:
+            for i in obj:
+                obj[i] = self._remove_none_decode(obj[i])
+        else:
+            if obj == u'None':
+                obj = None
+        return obj
+
 if __name__ == "__main__":
     a = [1,2,3]
     c = [{"a":"a","v":2},3,3]

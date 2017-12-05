@@ -152,6 +152,10 @@ class List():
             raise ValueError(u"排序的key不是数字")
 
     def _sum_list(self,num_list):
+        '''
+        返回数字列表的和
+        num_list: 数字列表
+        '''
         for i in num_list:
             i = int(i)
         return sum(num_list)
@@ -159,7 +163,8 @@ class List():
 
 
 
-if __name__ == "__main__":
 
-    b = List()._sort_dictlist(a1,"seat_id")
-    print b
+if __name__ == "__main__":
+    a = [{'Mobile': u'None'}]
+    b = List()._remove_none_decode(a)
+    #print b

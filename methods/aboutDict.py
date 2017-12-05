@@ -93,13 +93,21 @@ class Dict():
                 else:
                     dict1[level_name_list[i]] = str(level_value_list[i]).decode("utf-8")
             final_list.append(dict1)
+        print final_list
         dict2 = {}
         final_list3 = []
+        num = 0
         for k in group_list:
             temp_list = []
             for i in range(len(final_list)):
-                if i != int(k):
-                    temp_list.append(final_list[i])
+                if i != int(k) and k != 1:
+                    temp_list.append(final_list[num])
+                    num += 1
+                elif i != int(k) and k == 1:
+                    dict2[up_level] = final_list[num]
+                    final_list3.append(dict2.copy())
+                    num += 1
+                    break
                 else:
                     dict2[up_level] = temp_list
                     final_list3.append(dict2.copy())
@@ -110,11 +118,11 @@ if __name__ == "__main__":
 
     group_list = [3, 1, 3]
     up_level = "SeatInfo"
-    level_name_list = ["SeatNo","SeatNo2"]
+    level_name_list = ["SeatNo"]
     seat_no_list = [15912, 15913, 15914, 15911, 27529, 27530, 27531]
-    seat_no_list2 = [15912, 15913, 15914, 15911, 27529, 27530, 27531]
+    #seat_no_list2 = [15912, 15913, 15914, 15911, 27529, 27530, 27531]
 
-    a = Dict()._make_list_to_dict_list_with_group(up_level,group_list,level_name_list,seat_no_list,seat_no_list2)
+    a = Dict()._make_list_to_dict_list_with_group(up_level,group_list,level_name_list,seat_no_list)
     #print a
     #print len(a)
 

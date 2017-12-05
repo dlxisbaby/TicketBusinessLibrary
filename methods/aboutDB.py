@@ -19,7 +19,7 @@ from TicketBusinessLibrary.methods.aboutList import List
 class Database():
     def __init__(self,ip='',port='',user='',passwd=''):
         self.ip = ip
-        self.port = int(port)
+        self.port = port
         self.user = user
         self.passwd = passwd
 
@@ -181,11 +181,5 @@ class Handle():
         return fetchall
 
 if __name__ == "__main__":
-    a = Redis("10000142","42f5db4a353c746b")._get_seat_info_from_redis()
-    #print a
-    b = Redis()._get_available_seatid_from_dictlist(a,"3")
-    print b
-    #aa = ''
-    #bb = aa.join("444")
-    #cc = bb.join("222")
-    #print cc
+    a = Database().DB142_Select("tms_card_customer","mobile",{"card_no":"111"})
+    #print a[0]
