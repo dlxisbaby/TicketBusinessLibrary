@@ -478,6 +478,9 @@ class TicketKeywords():
         '''
         return String()._get_n_length_random_num(n,mode)
 
+    def dlx_num_to_decimal(self,num):
+        return Number()._num_to_decimal(num)
+
 if __name__ == "__main__":
     xml1 ="""<?xml version="1.0"?>
     <GetCinemaResult xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">

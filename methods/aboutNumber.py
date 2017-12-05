@@ -1,4 +1,5 @@
 #coding:utf-8
+from decimal import Decimal
 
 class Number():
     def __init__(self):
@@ -57,3 +58,14 @@ class Number():
             raise ValueError(u"此数据为空")
         else:
             return obj
+
+    def _num_to_decimal(self,num):
+        try:
+            return Decimal(num).quantize(Decimal("0.00"))
+        except:
+            raise ValueError(u"不是数字不能转换")
+
+if __name__ == "__main__":
+    aa = 3*3
+    a = Number()._num_to_decimal(3*3)
+    #print a
