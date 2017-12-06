@@ -78,7 +78,7 @@ class Xml():
         Results = xml_data.getElementsByTagName(tag_name)
         for result in Results:
             uni_id = result.getElementsByTagName(uni_name)[0].childNodes[0].data
-            if uni_id == uni_value:
+            if str(uni_id) == str(uni_value):
                 return result.getElementsByTagName(hope_name)[0].childNodes[0].data
                 break
 

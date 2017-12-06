@@ -21,17 +21,16 @@ class TicketKeywords():
     def __init__(self):
         pass
 
-    def dlx_select_142database_by_sql(self,sql,db_name=config.cinema_info["mysql_db"],ip=config.cinema_info["ip"],port=3306,user=config.cinema_info["mysql_user"],passwd=config.cinema_info["mysql_passwd"]):
+    def dlx_select_database_by_sql(self,sql,target):
         '''
-        使用自写sql查询任意服务器的数据库,返回列表\n
-        :param db_name: 数据库名称\n
-        :param sql: 查询语句\n
-        :param ip: IP地址\n
-        :param port: 端口\n
-        :param user: 用户名\n
-        :param passwd: 密码\n
+        使用自写sql查询服务器的数据库,返回列表\n
+        sql: 查询语句\n
+        target:目标服务器，目前支持142和mid（中间平台）
         '''
-        datas = Database(ip,int(port),user,passwd).DB_select_by_sql(db_name,sql)
+        if target == "142":
+            datas = Database(config.cinema_info["ip"],3306,config.cinema_info["mysql_user"],config.cinema_info["mysql_passwd"]).DB_select_by_sql(config.cinema_info["mysql_db"],sql)
+        elif target == "mid":
+            datas = Database(config.mid_info["ip"],3306,config.mid_info["mysql_user"],config.mid_info["mysql_passwd"]).DB_select_by_sql(config.mid_info["mysql_db"],sql)
         Number()._sure_data_not_null(datas)
         # print datas
         if type(datas[0]) == tuple and len(datas[0]) <= 1:
@@ -45,46 +44,26 @@ class TicketKeywords():
         else:
             return datas
 
-    def dlx_select_Middatabase_by_sql(self,sql,db_name=config.mid_info["mysql_db"],ip=config.mid_info["ip"],port=3306,user=config.mid_info["mysql_user"],passwd=config.mid_info["mysql_passwd"]):
-        '''
-        使用自写sql查询任意服务器的数据库,返回列表\n
-        :param db_name: 数据库名称\n
-        :param sql: 查询语句\n
-        :param ip: IP地址\n
-        :param port: 端口\n
-        :param user: 用户名\n
-        :param passwd: 密码\n
-        '''
-        datas = Database(ip,int(port),user,passwd).DB_select_by_sql(db_name,sql)
-        Number()._sure_data_not_null(datas)
-        if type(datas[0]) == tuple and len(datas[0]) <= 1:
-            data_list = []
-            for i in datas:
-                data_list.append(i[0])
-            return data_list
-        else:
-            return datas
-
-    def dlx_select_database_by_sql(self,sql,db_name,ip,port,user,passwd):
-        '''
-        使用自写sql查询任意服务器的数据库,返回列表\n
-        :param db_name: 数据库名称\n
-        :param sql: 查询语句\n
-        :param ip: IP地址\n
-        :param port: 端口\n
-        :param user: 用户名\n
-        :param passwd: 密码\n
-        '''
-        datas = Database(ip,int(port),user,passwd).DB_select_by_sql(db_name,sql)
-        Number()._sure_data_not_null(datas)
-        if type(datas[0]) == tuple and len(datas[0]) <= 1:
-            data_list = []
-            for i in datas:
-                data_list.append(i[0])
-                logger.info(i[0])
-            return data_list
-        else:
-            return datas
+    # def dlx_select_database_by_sql(self,sql,db_name,ip,port,user,passwd):
+    #     '''
+    #     使用自写sql查询任意服务器的数据库,返回列表\n
+    #     :param db_name: 数据库名称\n
+    #     :param sql: 查询语句\n
+    #     :param ip: IP地址\n
+    #     :param port: 端口\n
+    #     :param user: 用户名\n
+    #     :param passwd: 密码\n
+    #     '''
+    #     datas = Database(ip,int(port),user,passwd).DB_select_by_sql(db_name,sql)
+    #     Number()._sure_data_not_null(datas)
+    #     if type(datas[0]) == tuple and len(datas[0]) <= 1:
+    #         data_list = []
+    #         for i in datas:
+    #             data_list.append(i[0])
+    #             logger.info(i[0])
+    #         return data_list
+    #     else:
+    #         return datas
 
     def dlx_assert_two_result(self,expect,actual,msg=''):
         '''
@@ -252,11 +231,19 @@ class TicketKeywords():
         '''
         return List()._db_list_to_standard_list(db_list,mode="1")
 
-    def dlx_get_current_unix_time_string(self):
+    def dlx_get_current_date_or_time(self,type,separate=''):
         '''
         获得当前时间的unix时间戳字符串
+        type为unix,date,time,datetime
         '''
-        return Time()._get_current_unix_time()
+        if type == "unix":
+            return Time()._get_current_unix_time()
+        elif type == "date" and separate == '':
+            return Time()._get_current_date(separate)
+        elif type == "time" and separate == '':
+            return Time()._get_current_time(separate)
+        else:
+            return Time()._get_current_date_and_time()
 
     def dlx_md5_32_lowercase(self,string):
         '''
