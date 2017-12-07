@@ -59,11 +59,14 @@ class Dict():
             final_list.append(dict1)
         dict2 = {}
         final_list2 = []
-        for i in final_list:
-            dict2[up_level] = i
-            temp = dict2.copy()
-            final_list2.append(temp)
-        return final_list2
+        if up_level == "":
+            return final_list
+        else:
+            for i in final_list:
+                dict2[up_level] = i
+                temp = dict2.copy()
+                final_list2.append(temp)
+            return final_list2
 
     def _make_list_to_dict_list_with_group(self,up_level,group_list,level_name_list,*level_value_list):
         '''
@@ -117,12 +120,12 @@ class Dict():
 if __name__ == "__main__":
 
     group_list = [3, 1, 3]
-    up_level = "SeatInfo"
+    up_level = "seat_info"
     level_name_list = ["SeatNo"]
     seat_no_list = [15912, 15913, 15914, 15911, 27529, 27530, 27531]
     #seat_no_list2 = [15912, 15913, 15914, 15911, 27529, 27530, 27531]
 
-    a = Dict()._make_list_to_dict_list_with_group(up_level,group_list,level_name_list,seat_no_list)
-    #print a
+    a = Dict()._make_list_to_dict_list(up_level,level_name_list,seat_no_list)
+    print a
     #print len(a)
 

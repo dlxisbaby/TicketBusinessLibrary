@@ -21,11 +21,13 @@ class TicketKeywords():
     def __init__(self):
         pass
 
-    def dlx_select_database_by_sql(self,sql,target):
+    def dlx_select_database_by_sql(self,sql,target,num_format="",without_zero="0"):
         '''
         使用自写sql查询服务器的数据库,返回列表\n
         sql: 查询语句\n
         target:目标服务器，目前支持142和mid（中间平台）
+        num_format:数字格式，纯数字列表时可以使用
+        without_zero：去除无效的0,1为去除，0为不去除
         '''
         if target == "142":
             datas = Database(config.cinema_info["ip"],3306,config.cinema_info["mysql_user"],config.cinema_info["mysql_passwd"]).DB_select_by_sql(config.cinema_info["mysql_db"],sql)
@@ -40,9 +42,17 @@ class TicketKeywords():
                     data_list.append(None)
                 else:
                     data_list.append(i[0])
-            return data_list
+            final = data_list
         else:
-            return datas
+            final = datas
+        if num_format == '':
+            final = final
+        else:
+            final = Number()._num_to_decimal(final,num_format)
+        if without_zero == "0":
+            return final
+        else:
+            return Number()._remove_zero(final)
 
     # def dlx_select_database_by_sql(self,sql,db_name,ip,port,user,passwd):
     #     '''
@@ -465,8 +475,8 @@ class TicketKeywords():
         '''
         return String()._get_n_length_random_num(n,mode)
 
-    def dlx_num_to_decimal(self,num):
-        return Number()._num_to_decimal(num)
+    def dlx_num_to_decimal(self,num,format="0.00"):
+        return Number()._num_to_decimal(num,format)
 
 if __name__ == "__main__":
     xml1 ="""<?xml version="1.0"?>
@@ -611,10 +621,10 @@ if __name__ == "__main__":
 
 
     tag_name_list = ["Mobile"]
-    b = TicketKeywords().dlx_select_142database_by_sql("SELECT mobile FROM tms_card_customer where card_no='111'")
-    c = TicketKeywords().dlx_sql_result_to_dictlist(tag_name_list,b)
+    b = TicketKeywords().dlx_select_database_by_sql("SELECT spedding_exchange_score/spedding_exchange_amount FROM tms_card_set_info csi RIGHT JOIN tms_card_type ct ON csi.card_type_id = ct.id WHERE ct.`name` = '折扣卡' AND csi.`status` = 1 AND csi.recharge_type = 1 ORDER BY csi.card_level_id","142","0.0000000")
+    #c = TicketKeywords().dlx_sql_result_to_dictlist(tag_name_list,b)
     print b
-    print c
+    #print c
 
 
 
