@@ -13,6 +13,7 @@ from TicketBusinessLibrary.methods.aboutTime import Time
 from TicketBusinessLibrary.methods.aboutFile import File
 from TicketBusinessLibrary.methods.aboutNumber import Number
 from TicketBusinessLibrary.methods.aboutDict import Dict
+from TicketBusinessLibrary.methods.aboutAssert import Assert
 from TicketBusinessLibrary import config
 
 from robot.api import logger
@@ -21,20 +22,24 @@ class TicketKeywords():
     def __init__(self):
         pass
 
-    def dlx_select_database_by_sql(self,sql,target,num_format="",without_zero="0"):
+    def dlx_select_database_by_sql(self,sql,target,num_format="",without_zero="",mode=""):
         '''
         使用自写sql查询服务器的数据库,返回列表\n
         sql: 查询语句\n
         target:目标服务器，目前支持142和mid（中间平台）
         num_format:数字格式，纯数字列表时可以使用
-        without_zero：去除无效的0,1为去除，0为不去除
+        without_zero：去除无效的0,不为空去除，空为不去除
+        mode:为unicode时转化所有元素为unicode
         '''
         if target == "142":
             datas = Database(config.cinema_info["ip"],3306,config.cinema_info["mysql_user"],config.cinema_info["mysql_passwd"]).DB_select_by_sql(config.cinema_info["mysql_db"],sql)
         elif target == "mid":
             datas = Database(config.mid_info["ip"],3306,config.mid_info["mysql_user"],config.mid_info["mysql_passwd"]).DB_select_by_sql(config.mid_info["mysql_db"],sql)
+        elif target == "140":
+            datas = Database(config.center_info["ip"],3306,config.center_info["mysql_user"],config.center_info["mysql_passwd"]).DB_select_by_sql(config.center_info["mysql_db"],sql)
+
         Number()._sure_data_not_null(datas)
-        # print datas
+        #print datas
         if type(datas[0]) == tuple and len(datas[0]) <= 1:
             data_list = []
             for i in datas:
@@ -45,35 +50,15 @@ class TicketKeywords():
             final = data_list
         else:
             final = datas
-        if num_format == '':
-            final = final
-        else:
+        if num_format != '':
             final = Number()._num_to_decimal(final,num_format)
-        if without_zero == "0":
-            return final
-        else:
-            return Number()._remove_zero(final)
+        if without_zero != "":
+            final = Number()._remove_zero(final)
+        if mode == "unicode":
+            for i in range(len(final)):
+                final[i] = str(final[i]).decode("utf-8")
+        return final
 
-    # def dlx_select_database_by_sql(self,sql,db_name,ip,port,user,passwd):
-    #     '''
-    #     使用自写sql查询任意服务器的数据库,返回列表\n
-    #     :param db_name: 数据库名称\n
-    #     :param sql: 查询语句\n
-    #     :param ip: IP地址\n
-    #     :param port: 端口\n
-    #     :param user: 用户名\n
-    #     :param passwd: 密码\n
-    #     '''
-    #     datas = Database(ip,int(port),user,passwd).DB_select_by_sql(db_name,sql)
-    #     Number()._sure_data_not_null(datas)
-    #     if type(datas[0]) == tuple and len(datas[0]) <= 1:
-    #         data_list = []
-    #         for i in datas:
-    #             data_list.append(i[0])
-    #             logger.info(i[0])
-    #         return data_list
-    #     else:
-    #         return datas
 
     def dlx_assert_two_result(self,expect,actual,msg=''):
         '''
@@ -81,16 +66,9 @@ class TicketKeywords():
         :param expect: 预期结果\n
         :param actual: 实际结果\n
         '''
+        Assert()._assert_two_result_one_by_one(expect,actual,msg)
 
-        if expect == actual:
-            logger.info(u"预期与实际结果相同")
-        else:
-            logger.info(u"预期结果为：{0}".format(expect))
-            logger.info(u"实际结果为：{0}".format(actual))
-            if msg == '':
-                raise AssertionError(u"预期与实际结果不同")
-            else:
-                raise AssertionError(msg)
+
 
     def dlx_assert_two_result_as_string(self,expect,actual,msg=''):
         '''
@@ -98,15 +76,7 @@ class TicketKeywords():
         :param expect: 预期结果\n
         :param actual: 实际结果\n
         '''
-        if str(expect) == str(actual):
-            logger.info(u"预期与实际结果相同")
-        else:
-            logger.info(u"预期结果为：{0}".format(expect))
-            logger.info(u"实际结果为：{0}".format(actual))
-            if msg == '':
-                raise AssertionError(u"预期与实际结果不同")
-            else:
-                raise AssertionError(msg)
+        Assert()._assert_two_result_as_string(expect,actual,msg)
 
 
     def dlx_assert_xml_resp_code(self,expect,actual,msg=''):
@@ -115,16 +85,7 @@ class TicketKeywords():
         :param expect: 预期结果\n
         :param actual: 实际结果\n
         '''
-
-        if expect == actual:
-            logger.info(u"预期与实际状态相同")
-        else:
-            logger.info(u"预期状态为：{0}\"{1}\"".format(expect,config.resp_code[expect]))
-            logger.info(u"实际状态为：{0}\"{1}\"".format(actual,config.resp_code[actual]))
-            if msg == '':
-                raise AssertionError(u"返回的状态与预期不相符")
-            else:
-                raise AssertionError(msg)
+        Assert()._assert_xml_resp_code(expect,actual,msg)
 
     def dlx_xml_to_dictlist(self,xml_code,order_by='',pass_tag_list=[],*level_tag_names):
         '''
@@ -437,12 +398,13 @@ class TicketKeywords():
         使一个浮点型数字，或者列表中、元组中的浮点型数字
         取消小数点后的无效0
         '''
-        if type(obj) == float:
-            return Number()._remove_zero_from_float(obj)
-        elif type(obj) == list or type(obj) == tuple:
-            return Number()._remove_zero_from_list_or_tuple(obj)
-        else:
-            return obj
+        # if type(obj) == float:
+        #     return Number()._remove_zero(obj)
+        # elif type(obj) == list or type(obj) == tuple:
+        #     return Number()._remove_zero_from_list_or_tuple(obj)
+        # else:
+        #     return obj
+        return Number()._remove_zero(obj)
 
     def dlx_make_string_for_sql(self,list_obj):
         '''
@@ -477,6 +439,15 @@ class TicketKeywords():
 
     def dlx_num_to_decimal(self,num,format="0.00"):
         return Number()._num_to_decimal(num,format)
+
+    def dlx_list_to_string(self,obj_list):
+        '''
+        将列表转化为字符串,如[1,2,3]转化为1,2,3
+        '''
+        return String()._list_to_string(obj_list)
+
+    def dlx_list_plus_list(self,list1,list2):
+        return list1+list2
 
 if __name__ == "__main__":
     xml1 ="""<?xml version="1.0"?>
@@ -617,14 +588,8 @@ if __name__ == "__main__":
     </Sessions>
 </GetCinemaSessionResult>
 """
-    aa = [{u'CinemaNo': u'18', u'SessionDate': u'1490623800', u'TicketSum': u'3', u'FilmNo': u'75', u'Price': u'315.00', u'SessionNo': u'12201', u'SeatInfos': {u'SeatInfo': [OrderedDict([(u'SeatNo', u'15912')]), OrderedDict([(u'SeatNo', u'15913')]), OrderedDict([(u'SeatNo', u'15914')])]}, u'OrderStatus': u'1', u'RefundDate': u'0', u'OrderNo': u'12201349209441055', u'BuyDate': u'1490623187'}, {u'CinemaNo': u'18', u'SessionDate': u'1490623800', u'TicketSum': u'1', u'FilmNo': u'75', u'Price': u'105.00', u'SessionNo': u'12201', u'SeatInfos': {u'SeatInfo': {u'SeatNo': u'15911'}}, u'OrderStatus': u'1', u'RefundDate': u'0', u'OrderNo': u'12201994350291240', u'BuyDate': u'1490623101'}]
-
-
-    tag_name_list = ["Mobile"]
-    b = TicketKeywords().dlx_select_database_by_sql("SELECT spedding_exchange_score/spedding_exchange_amount FROM tms_card_set_info csi RIGHT JOIN tms_card_type ct ON csi.card_type_id = ct.id WHERE ct.`name` = '折扣卡' AND csi.`status` = 1 AND csi.recharge_type = 1 ORDER BY csi.card_level_id","142","0.0000000")
-    #c = TicketKeywords().dlx_sql_result_to_dictlist(tag_name_list,b)
-    print b
-    #print c
 
 
 
+    a = TicketKeywords().dlx_select_database_by_sql("SELECT action FROM tms_card_use_info WHERE card_no = '166' ORDER BY id DESC","142","","0",mode="unicode")
+    print a

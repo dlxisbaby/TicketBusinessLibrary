@@ -164,6 +164,7 @@ class List():
 
 
 
+
 if __name__ == "__main__":
     a = [{'Mobile': u'None'}]
     b = List()._remove_none_decode(a)

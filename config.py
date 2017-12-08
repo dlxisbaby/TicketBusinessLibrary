@@ -26,6 +26,14 @@ cinema_info = {
     "mysql_passwd":"123456"
     }
 
+#集团信息
+center_info = {
+    "ip":"192.168.3.140",
+    "mysql_db":"tcenter",
+    "mysql_user":"root",
+    "mysql_passwd":"123456"
+    }
+
 #xml响应信息
 resp_code = {
     "0":u"请求正确,并且有数据",

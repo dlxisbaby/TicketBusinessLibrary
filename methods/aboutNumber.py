@@ -72,6 +72,6 @@ class Number():
         return num
 
 if __name__ == "__main__":
-    aa = 1/3.0
-    a = Number()._num_to_decimal(aa)
-    print aa
+    a = [Decimal("2.99"),Decimal("2.22"),Decimal("2.33")]
+    b = [Decimal("2.44"),Decimal("2.55")]
+    print a+b

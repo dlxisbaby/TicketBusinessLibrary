@@ -80,9 +80,19 @@ class String():
                 obj = None
         return obj
 
+    def _list_to_string(self,obj_list):
+        '''
+        将list转化为字符串
+        '''
+        final = ''
+        for i in obj_list:
+            final = final+ str(i) +","
+        return final[:-1]
+
+
 if __name__ == "__main__":
     a = [1,2,3]
     c = [{"a":"a","v":2},3,3]
-    b = String()._get_n_length_random_num(12)
+    b = String()._list_to_string(a)
     #print b
 
