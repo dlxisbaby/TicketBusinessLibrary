@@ -1,7 +1,7 @@
 #coding:utf-8
 
 
-import sys
+import sys,os
 reload(sys)
 sys.setdefaultencoding('utf8')
 
@@ -16,7 +16,7 @@ from TicketBusinessLibrary.methods.aboutDict import Dict
 from TicketBusinessLibrary.methods.aboutAssert import Assert
 from TicketBusinessLibrary import config
 
-from robot.api import logger
+
 
 class TicketKeywords():
     def __init__(self):
@@ -448,6 +448,9 @@ class TicketKeywords():
 
     def dlx_list_plus_list(self,list1,list2):
         return list1+list2
+
+    def dlx_kill_chrome_driver(self):
+        os.system("taskkill /im chromedriver.exe /f")
 
 if __name__ == "__main__":
     xml1 ="""<?xml version="1.0"?>
