@@ -1,6 +1,6 @@
 #coding:utf-8
 
-import time
+import time,datetime
 
 
 class Time():
@@ -43,6 +43,20 @@ class Time():
         value = time.strftime(format1,time1)
         return str(value)
 
+    def _get_date(self,way='',num=''):
+        '''
+        获取日期，way是after时获取当前日期之后的num天的日期
+        way:是after或者before
+        num:平移的天数
+        '''
+        if way == "after":
+            date = datetime.date.today() + datetime.timedelta(int(num))
+        elif way == "before":
+            date = datetime.date.today() - datetime.timedelta(int(num))
+        else:
+            date = datetime.date.today()
+        return date
+
 if __name__ == "__main__":
-    a = Time()._get_current_time()
+    a = Time()._get_date("before","2")
     print a

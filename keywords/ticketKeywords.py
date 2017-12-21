@@ -202,19 +202,28 @@ class TicketKeywords():
         '''
         return List()._db_list_to_standard_list(db_list,mode="1")
 
-    def dlx_get_current_date_or_time(self,type,separate=''):
+    def dlx_get_current_date_or_time(self,type='',separate=''):
         '''
         获得当前时间的unix时间戳字符串
         type为unix,date,time,datetime
         '''
         if type == "unix":
             return Time()._get_current_unix_time()
-        elif type == "date" and separate == '':
+        elif type == "date":
             return Time()._get_current_date(separate)
-        elif type == "time" and separate == '':
+        elif type == "time":
             return Time()._get_current_time(separate)
         else:
             return Time()._get_current_date_and_time()
+
+    def dlx_get_date(self,way='',num=''):
+        '''
+        获取日期，way是after时获取当前日期之后的num天的日期
+        way:是after或者before
+        num:平移的天数
+        '''
+        date = Time()._get_date(way,num)
+        return str(date)
 
     def dlx_md5_32_lowercase(self,string):
         '''
@@ -594,5 +603,5 @@ if __name__ == "__main__":
 
 
 
-    a = TicketKeywords().dlx_select_database_by_sql("SELECT action FROM tms_card_use_info WHERE card_no = '166' ORDER BY id DESC","142","","0",mode="unicode")
-    print a
+    a = TicketKeywords().dlx_get_date()
+    #print a
