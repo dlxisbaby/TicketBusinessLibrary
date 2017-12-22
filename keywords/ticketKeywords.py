@@ -603,5 +603,4 @@ if __name__ == "__main__":
 
 
 
-    a = TicketKeywords().dlx_get_date()
-    #print a
+
