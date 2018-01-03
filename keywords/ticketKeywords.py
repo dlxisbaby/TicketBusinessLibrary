@@ -461,6 +461,12 @@ class TicketKeywords():
     def dlx_kill_chrome_driver(self):
         os.system("taskkill /im chromedriver.exe /f")
 
+    def dlx_match_string(self,string1,string2):
+        '''
+        检查string1中是否包含string2,返回布尔类型
+        '''
+        return String()._match_string(string1,string2)
+
 if __name__ == "__main__":
     xml1 ="""<?xml version="1.0"?>
     <GetCinemaResult xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">

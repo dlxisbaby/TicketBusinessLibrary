@@ -1,6 +1,6 @@
 #coding:utf-8
 
-import sys,hashlib
+import sys,hashlib,re
 reload(sys)
 sys.setdefaultencoding('utf8')
 from random import Random
@@ -89,10 +89,20 @@ class String():
             final = final+ str(i) +","
         return final[:-1]
 
+    def _match_string(self,string1,string2):
+        '''
+        检查string1中是否包含string2,返回布尔类型
+        '''
+        obj = re.search(string2,string1)
+        if obj != None:
+            return True
+        else:
+            return False
+
 
 if __name__ == "__main__":
-    a = [1,2,3]
-    c = [{"a":"a","v":2},3,3]
-    b = String()._list_to_string(a)
-    #print b
+    a = "待删除"
+    c = "原材料-待删除3"
+    b = String()._match_string(c,a)
+    print b
 
