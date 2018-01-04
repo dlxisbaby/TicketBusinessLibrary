@@ -59,6 +59,16 @@ class TicketKeywords():
                 final[i] = str(final[i]).decode("utf-8")
         return final
 
+    def dlx_insert_data_to_db(self,target,sql,db_name):
+        '''
+        向数据库中插入数据 \n
+        target: 服务器，如142,143等 \n
+        db_name: 数据库名称 \n
+        sql: 插入语句
+        '''
+        ip = "192.168.3." + target
+        Database(ip,3306,"root","123456").DB_insert_data(sql,db_name)
+
 
     def dlx_assert_two_result(self,expect,actual,msg=''):
         '''
@@ -607,6 +617,6 @@ if __name__ == "__main__":
 </GetCinemaSessionResult>
 """
 
-
+    #TicketKeywords().dlx_insert_data_to_db("147","INSERT INTO tms_card_level(id,cinema_code,level_name,update_time,`status`,is_enable) VALUES(2,10000147,'9折卡',1515050612,1,1);")
 
 

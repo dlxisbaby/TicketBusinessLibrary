@@ -30,26 +30,13 @@ class Database():
         fetchall = cur.fetchall()
         return fetchall
 
-    # def _select_database_by_sql(self,sql,db_name,ip,port,user,passwd):
-    #     '''
-    #     使用自写sql查询任意服务器的数据库,返回列表\n
-    #     :param db_name: 数据库名称\n
-    #     :param sql: 查询语句\n
-    #     :param ip: IP地址\n
-    #     :param port: 端口\n
-    #     :param user: 用户名\n
-    #     :param passwd: 密码\n
-    #     '''
-    #     datas = Database(ip,int(port),user,passwd).DB_select_by_sql(db_name,sql)
-    #     Number()._sure_data_not_null(datas)
-    #     if type(datas[0]) == tuple and len(datas[0]) <= 1:
-    #         data_list = []
-    #         for i in datas:
-    #             data_list.append(i[0])
-    #             logger.info(i[0])
-    #         return data_list
-    #     else:
-    #         return datas
+    def DB_insert_data(self,sql,db_name="tms"):
+        conn = pymysql.connect(host=self.ip,port=3306,user=self.user,passwd=self.passwd,db=db_name,charset="utf8")
+        cur = conn.cursor()
+        cur.execute(sql)
+        cur.close()
+        conn.commit()
+        conn.close()
 
     def DB142_Select(self,table,key="*",condition=''):
         datas = DB(config.cinema_info["mysql_db"],table)._select(key)._where(condition)._submit(config.cinema_info["ip"],3306,config.cinema_info["mysql_user"],config.cinema_info["mysql_passwd"])
@@ -202,5 +189,4 @@ class Handle():
         return fetchall
 
 if __name__ == "__main__":
-    a = Database().DB142_Select("tms_card_customer","mobile",{"card_no":"111"})
-    #print a[0]
+    a = Database("192.168.3.147",3306,"root","123456").DB_insert_data("tms","INSERT INTO tms_card_level(id,cinema_code,level_name,update_time,`status`,is_enable) VALUES(4,10000147,'9折卡',1515050612,1,1)")

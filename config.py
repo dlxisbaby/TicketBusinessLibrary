@@ -26,6 +26,15 @@ cinema_info = {
     "mysql_passwd":"123456"
     }
 
+#147信息
+cinema_147 = {
+    "cinema_code":"10000147",
+    "ip":"192.168.3.147",
+    "mysql_db":"tms",
+    "mysql_user":"root",
+    "mysql_passwd":"123456"
+    }
+
 #集团信息
 center_info = {
     "ip":"192.168.3.140",
