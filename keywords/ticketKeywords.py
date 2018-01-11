@@ -26,17 +26,18 @@ class TicketKeywords():
         '''
         使用自写sql查询服务器的数据库,返回列表\n
         sql: 查询语句\n
-        target:目标服务器，目前支持142和mid（中间平台）
+        target:目标服务器，如mid，140,142等
         num_format:数字格式，纯数字列表时可以使用
         without_zero：去除无效的0,不为空去除，空为不去除
         mode:为unicode时转化所有元素为unicode
         '''
-        if target == "142":
-            datas = Database(config.cinema_info["ip"],3306,config.cinema_info["mysql_user"],config.cinema_info["mysql_passwd"]).DB_select_by_sql(config.cinema_info["mysql_db"],sql)
-        elif target == "mid":
+        if target == "mid":
             datas = Database(config.mid_info["ip"],3306,config.mid_info["mysql_user"],config.mid_info["mysql_passwd"]).DB_select_by_sql(config.mid_info["mysql_db"],sql)
         elif target == "140":
             datas = Database(config.center_info["ip"],3306,config.center_info["mysql_user"],config.center_info["mysql_passwd"]).DB_select_by_sql(config.center_info["mysql_db"],sql)
+        else:
+            ip = "192.168.3."+target
+            datas = Database(ip,3306,"root","123456").DB_select_by_sql("tms",sql)
 
         Number()._sure_data_not_null(datas)
         #print datas
