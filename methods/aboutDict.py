@@ -38,7 +38,7 @@ class Dict():
         :param level_value_list: 层级值列表，需要与层级名称列表中的值一一对应FilmNo_list,FilmName_list,FilmType_list,Language_list
         '''
         if len(level_name_list) != len(level_value_list):
-            raise ValueError(u"名称列表与值列表长度不一致")
+            raise ValueError(u"名称列表与值列表长度不一致\n名称列表长度为:{0}\n值列表长度为:{1}".format(len(level_name_list),len(level_value_list)))
         final_list = []
         dict1 = {}
         if type(level_value_list[0]) == list or type(level_value_list[0]) == tuple:
@@ -77,7 +77,7 @@ class Dict():
         level_value_list: 层级值列表，需要与层级名称列表中的值一一对应FilmNo_list,FilmName_list,FilmType_list,Language_list
         '''
         if len(level_name_list) != len(level_value_list):
-            raise ValueError(u"名称列表与值列表长度不一致")
+            raise ValueError(u"名称列表与值列表长度不一致\n名称列表长度为:{0}\n值列表长度为:{1}".format(len(level_name_list),len(level_value_list)))
         final_list = []
         dict1 = {}
         if type(level_value_list[0]) == list or type(level_value_list[0]) == tuple:
