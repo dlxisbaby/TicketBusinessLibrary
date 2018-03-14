@@ -199,8 +199,10 @@ class TicketKeywords():
         '''
         列表1减去列表2，返回新的列表
         '''
+        for i in range(len(list1)):
+            list1[i] = str(list1[i])
         for i in list2:
-            list1.remove(i)
+            list1.remove(str(i))
         return list1
 
     def dlx_db_list_to_standard_list(self,db_list,mode="1"):
@@ -618,6 +620,7 @@ if __name__ == "__main__":
 </GetCinemaSessionResult>
 """
 
-    #TicketKeywords().dlx_insert_data_to_db("147","INSERT INTO tms_card_level(id,cinema_code,level_name,update_time,`status`,is_enable) VALUES(2,10000147,'9折卡',1515050612,1,1);")
-
+    list1 = [1,2,3,4]
+    list2 = ['2','3']
+    print TicketKeywords().dlx_list_subtract_list(list1,list2)
 
